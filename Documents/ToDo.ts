@@ -1,1 +1,1 @@
-- check if Extensions are needed or the services just need to be provided in the .Logic Controllers.
+- Adapt Controllers according to Mitschrift POS Gehrer S.105(Laptop: C: \Users\odk\OneDrive\Desktop\Aus -, Weiterbildung\HTBLA\POS_OOP_G.Gehrer_C#\Semester 3, 4)

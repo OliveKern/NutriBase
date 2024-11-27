@@ -6,7 +6,7 @@ using NutriBase.Logic.Entities.Base;
 
 namespace NutriBase.Logic.Entities.App;
 
-public abstract class Plan : IdentityEntity
+public abstract class Plan : VersionEntity
 {
     [MaxLength(512)]
     public string Definition { get; set; } = string.Empty;

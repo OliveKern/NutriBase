@@ -2,7 +2,7 @@ using System;
 
 namespace NutriBase.Logic.Entities.Base;
 
-public abstract class Product : IdentityEntity
+public abstract class Product : VersionEntity
 {
     public string Definition { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;

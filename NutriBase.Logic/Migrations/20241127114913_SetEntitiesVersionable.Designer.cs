@@ -11,8 +11,8 @@ using NutriBase.Logic.DataContext;
 namespace NutriBase.Logic.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20241126210026_InitDb")]
-    partial class InitDb
+    [Migration("20241127114913_SetEntitiesVersionable")]
+    partial class SetEntitiesVersionable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,12 @@ namespace NutriBase.Logic.Migrations
 
                     b.Property<byte[]>("PasswordSalt")
                         .IsRequired()
+                        .HasColumnType("BLOB");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("BLOB");
 
                     b.Property<string>("Username")
@@ -75,6 +81,12 @@ namespace NutriBase.Logic.Migrations
                     b.Property<int?>("NutritionForm")
                         .HasColumnType("INTEGER");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("BLOB");
+
                     b.Property<decimal>("TotalCost")
                         .HasColumnType("TEXT");
 
@@ -104,6 +116,12 @@ namespace NutriBase.Logic.Migrations
 
                     b.Property<int>("IngredientNumber")
                         .HasColumnType("INTEGER");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("BLOB");
 
                     b.Property<decimal>("TotalCost")
                         .HasColumnType("TEXT");
@@ -155,6 +173,12 @@ namespace NutriBase.Logic.Migrations
                     b.Property<int?>("RecipeId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("BLOB");
+
                     b.Property<int?>("ShoppingListId")
                         .HasColumnType("INTEGER");
 
@@ -192,6 +216,12 @@ namespace NutriBase.Logic.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("BLOB");
 
                     b.HasKey("Id");
 

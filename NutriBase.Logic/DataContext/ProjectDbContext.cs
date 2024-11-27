@@ -5,11 +5,11 @@ namespace NutriBase.Logic.DataContext;
 /// <summary>
 /// Entity Framework data-context for the application.
 /// </summary>
-internal class NutriBaseDbContext : DbContext
+internal class ProjectDbContext : DbContext
 {
     private static readonly string ConnectionString = "Data source= ../Database/nutriBase.db";
 
-    public NutriBaseDbContext()
+    public ProjectDbContext()
     {
         BeforeClassInitialize();
         AfterClassInitialize();
