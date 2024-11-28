@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using NutriBase.Logic.Entities.App;
 using NutriBase.Logic.Modules.Enumerations;
 
 namespace NutriBase.Logic.Entities.Base;

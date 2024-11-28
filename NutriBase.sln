@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NutriBase.Logic", "NutriBase.Logic\NutriBase.Logic.csproj", "{E8FDF3DA-1478-47B0-8BBC-7E3E5ED0DD7B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NutriBase.ConApp", "NutriBase.ConApp\NutriBase.ConApp.csproj", "{A462693F-4E95-40C5-A8FE-2DA53A3E1364}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E8FDF3DA-1478-47B0-8BBC-7E3E5ED0DD7B} = {E8FDF3DA-1478-47B0-8BBC-7E3E5ED0DD7B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NutriBase.WebApp", "NutriBase.WebApp\NutriBase.WebApp.csproj", "{670C208B-E85B-4FBE-AABF-8F0F21D232CC}"
 EndProject

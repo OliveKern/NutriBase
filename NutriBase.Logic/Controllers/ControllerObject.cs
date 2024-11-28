@@ -30,9 +30,9 @@ public abstract class ControllerObject : IDisposable
         {
             if(disposing)
             {
-                if(contextOwner)
+                if(contextOwner && Context != null)
                 {
-                    Context?.Dispose();
+                    Context.Dispose();
                 }
                 Context = null;
             }

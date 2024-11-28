@@ -1,10 +1,19 @@
-﻿namespace NutriBase.ConApp
+﻿using NutriBase.Logic.Controllers.Accounts;
+using NutriBase.Logic.Entities.Account;
+
+namespace NutriBase.ConApp
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            using UsersController usersCtrl = new UsersController();
+            var entity = new User
+            {
+                Username = "Test Boy",
+                PasswordHash = new byte[0],
+                PasswordSalt = new byte[0]
+            };
         }
     }
 }
