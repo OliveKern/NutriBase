@@ -12,13 +12,35 @@ public abstract class GenericController<TEntity> : ControllerObject
 
     internal GenericController(ControllerObject other) : base(other) 
     {}
-    
-    public virtual Task<int>? SaveChangesAsync()
+
+    public DbSet<TEntity>? dbSet = null;
+
+    internal DbSet<TEntity> EntitySet
+    {
+        get
+        {
+            if(dbSet == null)
+            {
+                if(Context != null)
+                {
+                    dbSet = Context.GetDbSet<TEntity>();
+                }
+                else
+                {
+                    using var ctx = new DataContext.ProjectDbContext();
+                    dbSet = ctx.GetDbSet<TEntity>();
+                }
+            }
+            return dbSet;
+        }
+    }
+
+    public virtual async Task<int> SaveChangesAsync()
     {
         if (Context == null)
             throw new Exception("Invalid context");
 
-        return Context.SaveChangesAsync();
+        return await Context.SaveChangesAsync().ConfigureAwait(false);
     }
 
     public virtual async Task<TEntity> InsertAsync(TEntity entity)
@@ -66,5 +88,15 @@ public abstract class GenericController<TEntity> : ControllerObject
 
             return entity;      //eventually wrong to return something and await Task <Test it!>
         });
+    }
+
+    public virtual async Task<TEntity?> GetByIdAsync(int id)
+    {
+        if (Context == null)
+            throw new Exception("Invalid context");
+
+        var entity = await EntitySet.FirstOrDefaultAsync(x => x.Id == id);
+
+        return entity;
     }
 }

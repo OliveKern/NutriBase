@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Extensions\" />
+    <ProjectReference Include="..\NutriBase.Logic\NutriBase.Logic.csproj" />
   </ItemGroup>
 
 </Project>

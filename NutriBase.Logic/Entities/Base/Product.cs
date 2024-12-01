@@ -1,9 +1,11 @@
+using Microsoft.EntityFrameworkCore;
 using NutriBase.Logic.Entities.App;
 using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace NutriBase.Logic.Entities.Base;
 
+[Index(nameof(Definition), IsUnique = true)]
 public abstract class Product : VersionEntity
 {
     [Required]

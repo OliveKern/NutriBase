@@ -11,6 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NutriBase.ConApp", "NutriBa
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NutriBase.WebApp", "NutriBase.WebApp\NutriBase.WebApp.csproj", "{670C208B-E85B-4FBE-AABF-8F0F21D232CC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E8FDF3DA-1478-47B0-8BBC-7E3E5ED0DD7B} = {E8FDF3DA-1478-47B0-8BBC-7E3E5ED0DD7B}
+	EndProjectSection
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "NutriBase.Client", "NutriBase.Client\NutriBase.Client.esproj", "{02E78D5B-5AFE-4E39-9918-D694F3DF185C}"
 EndProject
