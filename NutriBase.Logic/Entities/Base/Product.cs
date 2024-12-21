@@ -11,12 +11,13 @@ public abstract class Product : VersionEntity
     [Required]
     [MaxLength(128)]
     public string Definition { get; set; } = string.Empty;
-
     [MaxLength(1024)]
-    public string Description { get; set; } = string.Empty;
-    public decimal Price { get; set; }
-    public int Amount { get; set; }
-
+    public string? Description { get; set; } = string.Empty;
+    public decimal? Price { get; set; } = 0;
+    [MaxLength(128)]
+    public string? PackageSize { get; set; }
+    
     //NavProps
-    public List<Plan> Plans { get; set; } = new();
+    public List<Recipe> Recipes { get; set; } = new();
+    public List<ShoppingList> ShoppingLists { get; set; } = new();    
 }

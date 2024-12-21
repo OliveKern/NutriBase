@@ -35,6 +35,9 @@ public abstract class GenericController<TEntity> : ControllerObject
         }
     }
 
+    //Implement Include 
+    // internal virtual IEnumerable<string> Includes => Array.Empty<string>();
+
     public virtual async Task<int> SaveChangesAsync()
     {
         if (Context == null)

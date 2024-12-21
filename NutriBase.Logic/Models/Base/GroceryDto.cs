@@ -1,12 +1,9 @@
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using NutriBase.Logic.Entities.App;
 using NutriBase.Logic.Modules.Enumerations;
 
-namespace NutriBase.Logic.Entities.Base;
+namespace NutriBase.Logic.Models.Base;
 
-[Table("Groceries", Schema = "Base")]
-public class Grocery : Product
+public class GroceryDto : ProductDto
 {
     public int? KaloriesPer100Gram { get; set; }
     public int? ProteinPer100Gram { get; set; }

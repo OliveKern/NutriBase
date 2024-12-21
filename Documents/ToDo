@@ -1,6 +1,0 @@
-- Adapt Controllers according to Mitschrift POS Gehrer S.111(Laptop: C: \Users\odk\OneDrive\Desktop\Aus -, Weiterbildung\HTBLA\POS_OOP_G.Gehrer_C#\Semester 3, 4)
-- Check Generic Controller according to Comments.
-- Check Bogus and Faker lt semester 3, 4 Mitschrift POS Gehrer S111
-- Implement Disposable as generic abstract method/class (Logic.Modules) currently used in Controller- and ServiceObject.
-
--Make a template.(z.b wie in semester 3,4 Mitsch POS Gehr beschr. bis S112) Iklusive Nugets. Ideally make an own quicktemplate for github.(You can do it!!)
