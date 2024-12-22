@@ -9,7 +9,6 @@ namespace NutriBase.WebApp.Controllers
 {
     public class UsersController : BaseApiController
     {
-        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
         {

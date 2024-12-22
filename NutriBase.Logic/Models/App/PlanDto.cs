@@ -6,5 +6,8 @@ abstract public class PlanDto : VersionModel
 {
     public int UserId { get; set; }
     public string Definition { get; set; } = string.Empty;
-    public DateTime CreationDate { get; set; }
+
+    public decimal? TotalCost { get; set; }
+    public bool? CostNotAccurate { get; set; }
+    public DateTime? CreationDate { get; set; }
 }

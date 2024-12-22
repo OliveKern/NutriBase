@@ -53,9 +53,7 @@ public abstract class GenericController<TEntity> : ControllerObject
         if (Context == null)
             throw new Exception("Invalid context");
 
-        var dbSet = Context.GetDbSet<TEntity>();
-
-        await dbSet.AddAsync(entity).ConfigureAwait(false);
+        await EntitySet.AddAsync(entity).ConfigureAwait(false);
 
         return entity;
     }
@@ -67,13 +65,11 @@ public abstract class GenericController<TEntity> : ControllerObject
         if (Context == null)
             throw new Exception("Invalid context");
 
-        var dbSet = Context.GetDbSet<TEntity>();
-
         return await Task.Run(() =>
         {
-            dbSet.Update(entity);
+            EntitySet.Update(entity);
             return entity;
-        });
+        }).ConfigureAwait(false);
     }
 
     public virtual async Task<TEntity?> DeleteAsync(int id)
@@ -83,14 +79,13 @@ public abstract class GenericController<TEntity> : ControllerObject
 
         return await Task.Run(() =>
         {
-            var dbSet = Context.GetDbSet<TEntity>();
-            TEntity? entity = dbSet.Find(id);
+            TEntity? entity = EntitySet.Find(id);
 
             if(entity != null)
-                dbSet.Remove(entity);
+                EntitySet.Remove(entity);
 
-            return entity;      //eventually wrong to return something and await Task <Test it!>
-        });
+            return entity == null? null : entity;      //eventually wrong to return something and await Task <Test it!>
+        }).ConfigureAwait(false);
     }
 
     public virtual async Task<TEntity?> GetByIdAsync(int id)
@@ -98,8 +93,24 @@ public abstract class GenericController<TEntity> : ControllerObject
         if (Context == null)
             throw new Exception("Invalid context");
 
-        var entity = await EntitySet.FirstOrDefaultAsync(x => x.Id == id);
+        return await EntitySet.FirstOrDefaultAsync(x => x.Id == id).ConfigureAwait(false);
+    }
 
-        return entity;
+    public virtual async Task<List<TEntity>> GetAllAsync()
+    {
+        if (Context == null)
+            throw new Exception("Invalid context");
+
+        return await EntitySet.ToListAsync().ConfigureAwait(false);
+    }
+
+    public virtual async Task<IEnumerable<TEntity>> InsertMultipleAsync(List<TEntity> entities)
+    {
+        if(Context == null)
+            throw new Exception("Invalid context");
+
+        await EntitySet.AddRangeAsync(entities).ConfigureAwait(false);
+
+        return entities;
     }
 }

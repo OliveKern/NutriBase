@@ -1,6 +1,4 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using NutriBase.Logic.Entities.Account;
 using NutriBase.Logic.Entities.Base;
@@ -15,8 +13,9 @@ public abstract class Plan : VersionEntity
     [Required]
     [MaxLength(512)]
     public string Definition { get; set; } = string.Empty;
-    public decimal? TotalCost => Groceries.Sum(x => x.Price);
-    public int IngredientNumber => Groceries.Count();
+
+    public decimal TotalCost { get; set; }
+    public bool CostNotAccurate { get; set; }
     public DateTime CreationDate = DateTime.UtcNow;
 
     //NavProps

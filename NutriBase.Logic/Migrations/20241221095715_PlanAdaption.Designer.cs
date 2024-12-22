@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NutriBase.Logic.DataContext;
 
@@ -11,9 +12,11 @@ using NutriBase.Logic.DataContext;
 namespace NutriBase.Logic.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    partial class ProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241221095715_PlanAdaption")]
+    partial class PlanAdaption
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,12 +128,8 @@ namespace NutriBase.Logic.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Author")
-                        .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
-
-                    b.Property<bool>("CostNotAccurate")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Definition")
                         .IsRequired()
@@ -147,9 +146,6 @@ namespace NutriBase.Logic.Migrations
                     b.Property<int?>("DurationInMin")
                         .HasColumnType("int");
 
-                    b.Property<int>("IngredientNumber")
-                        .HasColumnType("int");
-
                     b.Property<int?>("NutritionForm")
                         .HasColumnType("int");
 
@@ -159,13 +155,7 @@ namespace NutriBase.Logic.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<decimal>("TotalCost")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Valuation")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -186,9 +176,6 @@ namespace NutriBase.Logic.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("CostNotAccurate")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Definition")
                         .IsRequired()
                         .HasMaxLength(512)
@@ -197,20 +184,13 @@ namespace NutriBase.Logic.Migrations
                     b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("GoodsNumber")
-                        .HasColumnType("int");
-
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<decimal>("TotalCost")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("Usage")
-                        .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 

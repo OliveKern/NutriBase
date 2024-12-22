@@ -9,7 +9,8 @@ namespace NutriBase.Logic.Entities.App;
 public class ShoppingList : Plan
 {
     [MaxLength(128)]
-    public string? Usage { get; set; } = string.Empty;
-
+    public string Usage { get; set; } = string.Empty;
     public DateTime? DueDate { get; set; }
+
+    public int GoodsNumber { get; set; }
 }
