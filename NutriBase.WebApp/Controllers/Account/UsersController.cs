@@ -5,7 +5,7 @@ using NutriBase.Logic.Contracts;
 using NutriBase.Logic.Models.Accounts;
 using NutriBase.Logic.Services;
 
-namespace NutriBase.WebApp.Controllers
+namespace NutriBase.WebApp.Controllers.Account
 {
     public class UsersController : BaseApiController
     {
@@ -27,7 +27,7 @@ namespace NutriBase.WebApp.Controllers
             return user == null ? NotFound() : Ok(user);
         }
 
-        [HttpPost("register")]  //account/register
+        [HttpPost("register")]  //users/register
         public async Task<ActionResult<UserDto>> Register(UserDto user, ITokenService tokenService)
         {
             using var accountSrv = new AccountService();

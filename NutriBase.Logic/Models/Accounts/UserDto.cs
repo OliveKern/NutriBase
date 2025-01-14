@@ -4,7 +4,7 @@ namespace NutriBase.Logic.Models.Accounts;
 
 public class UserDto
 {
-    public string? Username { get; set; }
+    public string Username { get; set; } = string.Empty;
 
     public string? Password { get; set; }
 

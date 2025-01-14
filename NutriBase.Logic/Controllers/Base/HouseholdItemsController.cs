@@ -5,6 +5,9 @@ namespace NutriBase.Logic.Controllers.Base;
 
 public class HouseholdItemsController : GenericController<HouseholdItem>
 {
+    public HouseholdItemsController()
+    {
+    }
     public HouseholdItemsController(ControllerObject other) : base(other)
     {
     }

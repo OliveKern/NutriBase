@@ -6,4 +6,5 @@ public enum Material
     Paper = 1,
     Wood = 2,
     Metal = 3,
+    Glass = 4,
 }

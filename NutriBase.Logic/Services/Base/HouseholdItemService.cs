@@ -13,7 +13,7 @@ namespace NutriBase.Logic.Services.Base
     {
         private HouseholdItemsController houseHoldItemCtrl = new();
 
-        public async Task<HouseholdItemDto> InsertGroceryAsync(HouseholdItemDto hhiDto)
+        public async Task<HouseholdItemDto> InsertHouseHoldItemAsync(HouseholdItemDto hhiDto)
         {
             var houseHoldItem = new HouseholdItem
             {
@@ -30,7 +30,7 @@ namespace NutriBase.Logic.Services.Base
             return hhiDto;
         }
 
-        public async Task<HouseholdItemDto?> RemoveGroceryAsync(int id)
+        public async Task<HouseholdItemDto?> RemoveHouseHoldItemAsync(int id)
         {
             var returnEnt = await houseHoldItemCtrl.DeleteAsync(id);
             await houseHoldItemCtrl.SaveChangesAsync();

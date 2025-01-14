@@ -1,5 +1,7 @@
 
 using System.ComponentModel;
+using NutriBase.Logic.Contracts;
+using NutriBase.Logic.Services;
 using NutriBase.WebApp.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -64,7 +64,7 @@ namespace NutriBase.Logic.Services
             await usersCtrl.SaveChangesAsync();
 
             userDto.Token = tokenService.CreateToken(userDto);
-            userDto.Password = null;
+            userDto.Password = string.Empty;
 
             return userDto;
         }

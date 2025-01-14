@@ -5,6 +5,9 @@ namespace NutriBase.Logic.Controllers.Base;
 
 public class GroceriesController : GenericController<Grocery>
 {
+    public GroceriesController()
+    {
+    }
     public GroceriesController(ControllerObject other) : base(other)
     {
     }

@@ -43,7 +43,18 @@ public abstract class GenericController<TEntity> : ControllerObject
         if (Context == null)
             throw new Exception("Invalid context");
 
-        return await Context.SaveChangesAsync().ConfigureAwait(false);
+        int res = 0;
+
+        try
+        {
+            res = await Context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+        return res;
     }
 
     public virtual async Task<TEntity> InsertAsync(TEntity entity)

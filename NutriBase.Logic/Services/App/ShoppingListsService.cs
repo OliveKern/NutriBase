@@ -3,6 +3,8 @@ using NutriBase.Logic.Controllers.Base;
 using NutriBase.Logic.Entities.App;
 using NutriBase.Logic.Entities.Base;
 using NutriBase.Logic.Models.App;
+using NutriBase.Logic.Models.Base;
+using NutriBase.Logic.Modules.Extensions;
 
 namespace NutriBase.Logic.Services.App;
 
@@ -10,33 +12,57 @@ public class ShoppingListsService : ServiceObject
 {
     private ShoppingListsController shoListCtrl = new();
 
-    public async Task<ShoppingListDto> InsertShoListAsync(ShoppingListDto shoListDto, List<Product> products)
+    public async Task<ShoppingListDto> InsertShoppingListAsync(ShoppingListDto shoListDto)
     {
-        if (products == null || products.Count == 0)
+        if (shoListDto.Products == null || shoListDto.Products.Count == 0)
         {
-            throw new ArgumentNullException($"{nameof(products)} are empty");
+            throw new ArgumentNullException($"{nameof(shoListDto.Products)} are empty");
         }
 
         var shoList = new ShoppingList
         {
             Definition = shoListDto.Definition,
-            TotalCost = CalculateTotalCost(products),
+            TotalCost = CalculateTotalCost(shoListDto.Products),
             Usage = shoListDto.Usage,
             DueDate = shoListDto.DueDate,
-            GoodsNumber = products.Count(),
-            CostNotAccurate = CheckPrices(products)
+            GoodsNumber = shoListDto.Products.Count(),
+            CostNotAccurate = CheckPrices(shoListDto.Products),
+            UserId = shoListDto.UserId,
         };
 
-        shoList.Groceries.AddRange(products.OfType<Grocery>());
-        shoList.HouseholdItems.AddRange(products.OfType<HouseholdItem>());
+        foreach (var product in shoListDto.Products.OfType<GroceryDto>())
+        {
+            var prod = new Grocery();
+            product.CopyProperties(prod);
+            shoList.Groceries.Add(prod);
+        }
+        foreach (var product in shoListDto.Products.OfType<HouseholdItemDto>())
+        {
+            var prod = new HouseholdItem();
+            product.CopyProperties(prod);
+            shoList.HouseholdItems.Add(prod);
+        }
+
         shoList = await shoListCtrl.InsertAsync(shoList);
+        await shoListCtrl.SaveChangesAsync();
 
-        using var groceriesCtrl = new GroceriesController(shoListCtrl);
-        using var houseHoItCtrl = new HouseholdItemsController(shoListCtrl);
-        await groceriesCtrl.InsertNewGroceriesAsync(products.OfType<Grocery>().ToList());
-        await houseHoItCtrl.InsertNewHouseholdItemsAsync(products.OfType<HouseholdItem>().ToList());
+        shoList.CopyProperties(shoListDto);
+        return shoListDto;
+    }
 
-        return new ShoppingListDto 
+    private decimal CalculateTotalCost(List<ProductDto> products)
+    {
+        return products.Sum(p => p.Price ?? 0);
+    }
+    private bool CheckPrices(List<ProductDto> products)
+    {
+        return products.Any(p => p.Price == null);
+    }
+
+    public async Task<IEnumerable<ShoppingListDto>> GetAllShoppingListsAsync()
+    {
+        var shoLists = await shoListCtrl.GetAllAsync();
+        return shoLists.Select(shoList => new ShoppingListDto
         {
             Id = shoList.Id,
             Definition = shoList.Definition,
@@ -45,16 +71,6 @@ public class ShoppingListsService : ServiceObject
             DueDate = shoList.DueDate,
             GoodsNumber = shoList.GoodsNumber,
             CostNotAccurate = shoList.CostNotAccurate
-        };
-    }
-
-    private decimal CalculateTotalCost(List<Product> products)
-    {
-        return products.Sum(p => p.Price ?? 0);
-    }
-
-    private bool CheckPrices(List<Product> products)
-    {
-        return products.Any(p => p.Price == null);
+        });
     }
 }
