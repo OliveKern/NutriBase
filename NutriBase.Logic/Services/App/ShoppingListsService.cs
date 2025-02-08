@@ -19,16 +19,7 @@ public class ShoppingListsService : ServiceObject
             throw new ArgumentNullException($"{nameof(shoListDto.Products)} are empty");
         }
 
-        var shoList = new ShoppingList
-        {
-            Definition = shoListDto.Definition,
-            TotalCost = CalculateTotalCost(shoListDto.Products),
-            Usage = shoListDto.Usage,
-            DueDate = shoListDto.DueDate,
-            GoodsNumber = shoListDto.Products.Count(),
-            CostNotAccurate = CheckPrices(shoListDto.Products),
-            UserId = shoListDto.UserId,
-        };
+        var shoList = ShoListDtoToEntity(shoListDto);
 
         foreach (var product in shoListDto.Products.OfType<GroceryDto>())
         {
@@ -50,15 +41,6 @@ public class ShoppingListsService : ServiceObject
         return shoListDto;
     }
 
-    private decimal CalculateTotalCost(List<ProductDto> products)
-    {
-        return products.Sum(p => p.Price ?? 0);
-    }
-    private bool CheckPrices(List<ProductDto> products)
-    {
-        return products.Any(p => p.Price == null);
-    }
-
     public async Task<IEnumerable<ShoppingListDto>> GetAllShoppingListsAsync()
     {
         var shoLists = await shoListCtrl.GetAllAsync();
@@ -73,4 +55,25 @@ public class ShoppingListsService : ServiceObject
             CostNotAccurate = shoList.CostNotAccurate
         });
     }
+
+    private ShoppingList ShoListDtoToEntity(ShoppingListDto shoListDto)
+    {
+        var shoList = new ShoppingList();
+        shoListDto.CopyProperties(shoList);
+        shoList.TotalCost = CalculateTotalCost(shoListDto.Products);
+        shoList.GoodsNumber = shoListDto.Products.Count();
+        shoList.CostNotAccurate = CheckPrices(shoListDto.Products);
+
+        return shoList;
+    }
+
+    private decimal CalculateTotalCost(List<ProductDto> products)
+    {
+        return products.Sum(p => p.Price ?? 0);
+    }
+    private bool CheckPrices(List<ProductDto> products)
+    {
+        return products.Any(p => p.Price == null);
+    }
+
 }
