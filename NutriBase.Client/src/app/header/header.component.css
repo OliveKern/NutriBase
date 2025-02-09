@@ -5,5 +5,20 @@
 }
 .nav {
   width: 20vw;
-  margin: 1vw 2vw 1vw 2vw;
+  margin: 1vw 1vw 1vw 1vw;
+}
+
+li {
+    padding-left: 1vw;
+}
+
+img {
+  width: 2vw;
+  height: auto;
+  margin-bottom: 2vh;
+}
+
+span {
+  font-size: 2vw;
+  margin-left: 1vw;
 }

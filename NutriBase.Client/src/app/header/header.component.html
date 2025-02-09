@@ -3,28 +3,22 @@
 <div class="d-flex justify-content-between text-bg-dark">
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a href="#" class="nav-link active" aria-current="page">
-        <img class="bi pe-none me-2" width="20vh" height="20vh" src="/pictures/Home.png" alt="Home">
-        Home
+      <a routerLink="/Home" routerLinkActive="true" class="nav-link" aria-current="page">
+        <img class="bi pe-none me-2" src="/pictures/Home.png" alt="Home">
+        <span>Home</span>
       </a>
     </li>
     <hr>
-    <li>
-      <a href="#" class="nav-link text-white">
-        <img class="bi pe-none me-2" width="20vh" height="20vh" src="/pictures/ShoppingCart.png" alt="Shopping cart">
-        Shopping Lists
+    <li class="nav-item">
+      <a routerLink="/Shopping" routerLinkActive="true" class="nav-link">
+        <img class="bi pe-none me-2" src="/pictures/ShoppingCart.png" alt="Shopping cart">
+        <span>Shopping Lists</span>
       </a>
     </li>
-    <li>
-      <a href="#" class="nav-link text-white">
-        <img class="bi pe-none me-2" width="20vh" height="20vh" src="/pictures/Recipe.png" alt="Shopping cart">
-        Recipes
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link text-white">
-        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-        Products
+    <li class="nav-item">
+      <a routerLink="/Recipes" routerLinkActive="true" class="nav-link">
+        <img class="bi pe-none me-2" src="/pictures/Recipe.png" alt="Shopping cart">
+        <span>Recipes</span>
       </a>
     </li>
   </ul>
