@@ -1,0 +1,9 @@
+.d-flex {
+  border-radius: 10px;
+  width: 24vw;
+  height: 88vh;
+}
+.nav {
+  width: 20vw;
+  margin: 1vw 2vw 1vw 2vw;
+}

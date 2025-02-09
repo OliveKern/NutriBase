@@ -1,3 +1,14 @@
-html {
-    height: 100%;
+/*html {
+    height: 62px;
+}*/
+.navbar {
+  height: 55px;
 }
+
+/*.nav-tabs .nav-link {*/
+/*  border: none;*/
+  /*border-bottom: 1px solid white;
+  border-radius: 0;*/ /* No rounded corners */
+  /*color: white;*/ /* White text color */
+  /*margin: 10px
+}*/

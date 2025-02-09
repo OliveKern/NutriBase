@@ -60,20 +60,7 @@ public class ShoppingListsService : ServiceObject
     {
         var shoList = new ShoppingList();
         shoListDto.CopyProperties(shoList);
-        shoList.TotalCost = CalculateTotalCost(shoListDto.Products);
-        shoList.GoodsNumber = shoListDto.Products.Count();
-        shoList.CostNotAccurate = CheckPrices(shoListDto.Products);
 
         return shoList;
     }
-
-    private decimal CalculateTotalCost(List<ProductDto> products)
-    {
-        return products.Sum(p => p.Price ?? 0);
-    }
-    private bool CheckPrices(List<ProductDto> products)
-    {
-        return products.Any(p => p.Price == null);
-    }
-
 }

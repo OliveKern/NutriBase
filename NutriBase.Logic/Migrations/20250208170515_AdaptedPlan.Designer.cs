@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NutriBase.Logic.DataContext;
 
@@ -11,9 +12,11 @@ using NutriBase.Logic.DataContext;
 namespace NutriBase.Logic.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    partial class ProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250208170515_AdaptedPlan")]
+    partial class AdaptedPlan
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -187,6 +190,9 @@ namespace NutriBase.Logic.Migrations
 
                     b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("GoodsNumber")
+                        .HasColumnType("int");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()

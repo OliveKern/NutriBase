@@ -14,8 +14,8 @@ public abstract class Plan : VersionEntity
     [MaxLength(512)]
     public string Definition { get; set; } = string.Empty;
 
-    public decimal TotalCost { get; set; }
-    public bool CostNotAccurate { get; set; }
+    public decimal TotalCost => Groceries.Sum(x => x.Price ?? 0) + HouseholdItems.Sum(x => x.Price ?? 0);
+    public bool CostNotAccurate => Groceries.Any(x => x.Price == null) || HouseholdItems.Any(x => x.Price == null);
     public DateTime CreationDate = DateTime.UtcNow;
 
     //NavProps

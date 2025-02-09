@@ -1,6 +1,8 @@
-<app-nav></app-nav>
+<app-nav class="navbar "></app-nav>
 
 <div class="flex-container">
-    <app-header class="flex-child"></app-header>
-    <app-home class="flex-child"></app-home>
+    <app-header class="flex-child bg-dark"></app-header>
+    <div class="flex-child router-container">
+      <router-outlet></router-outlet>
+    </div>
 </div>

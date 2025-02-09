@@ -1,10 +1,30 @@
+.navbar {
+  height: 55px;
+}
+
 .flex-container {
-    display: flex;
+  display: flex;
+  padding: 2vh 1vw 2vh 1vw;
 }
+
 .flex-child {
-    flex: 1;
-    border: 2px 
+  border-radius: 10px;
+  flex: 1;
+  background-color: white;
+  border: solid;
+  border-color: black;
 }
+
 .flex-child:first-child {
-    margin-right: 20px;
+  background-color: darkgray;
+  border-color: transparent;
+  padding: 10px;
 }
+
+.flex-child:last-child {
+  background-color: white;
+  border-color: transparent;
+  margin-left: 10px;
+  flex: 0 0 71vw;
+}
+
