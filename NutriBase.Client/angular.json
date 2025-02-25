@@ -39,6 +39,13 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
+              // "node_modules/bootswatch/dist/pulse/bootstrap.min.css",
+              "node_modules/bootswatch/dist/solar/bootstrap.min.css",
+              // "node_modules/bootswatch/dist/flatly/bootstrap.min.css",
+              // "node_modules/bootswatch/dist/sketchy/bootstrap.min.css",
+              // "node_modules/bootswatch/dist/vapor/bootstrap.min.css",
+              // "node_modules/bootswatch/dist/slate/bootstrap.min.css",
+              // "node_modules/bootswatch/dist/superhero/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []

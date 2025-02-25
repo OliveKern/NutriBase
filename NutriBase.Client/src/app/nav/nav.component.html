@@ -1,18 +1,8 @@
-<!--<header style="height: 8vh; line-height: 8vh; vertical-align: middle;" class="navbar sticky-top bg-dark flex-md-nowrap p-1 shadow" data-bs-theme="dark">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <img class="bi pe-none me-2" width="40vh" height="35vh" src="/pictures/Logo.png" alt="Logo">
-        <span class="fs-4">Nutrition Base</span>
-    </a>  
-    <div id="navbarSearch" class="navbar-search w-100 collapse">
-      <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-    </div>
-</header>-->
-<!--<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">-->
-<nav class="navbar navbar-expand navbar-dark fixed-top bg-dark">
-  <div class="container-fluid d-flex justify-content-between p-4">
-    <a href="/" class="d-flex align-items-center mb-6 mb-md-0 me-md-auto text-white text-decoration-none">
-      <img class="bi pe-none me-2" width="40vh" height="35vh" src="/pictures/Logo.png" alt="Logo">
-      <span class="fs-4 fw-bold">Nutrition Base</span>
+<nav class="navbar fixed-top bg-primary">
+  <div class="container-fluid d-flex justify-content-between">
+    <a href="/" class="d-flex align-items-center">
+      <img class="title-img" src="/pictures/Logo.png" alt="Logo">
+      <span class="title">Nutrition Base</span>
     </a>
 
 
@@ -39,21 +29,16 @@
       <!--}-->
     </ul>
 
-    <!--@if (accountService.currentUser()) {-->
+    <!-- @if (accountService.currentUser()) { -->
     <div dropdown class="dropdown">
-      <a dropdownToggle class="dropdown-toggle text-light text-decoration-none">
+      <a dropdownToggle class="dropdown-toggle text-decoration-none">
         Welcome
-        <!--{{accountService.currentUser()?.username | titlecase}}-->
+        <!-- {{accountService.currentUser()?.username | titlecase}} -->
       </a>
-      
-
       <div *dropdownMenu class="dropdown-menu">
-        
-
         <a class="dropdown-item">Edit profile</a>
         <div class="dropdown-divider"></div>
-
-        <!--<a class="dropdown-item" (click)="onLogout()">Logout</a>-->
+        <a class="dropdown-item" (click)="onLogout()">Logout</a>
       </div>
     </div>
     <!--}-->
@@ -65,10 +50,10 @@
       <button class="btn btn-outline-success" type="submit">Login</button>
     </form>-->
     <form #loginForm="ngForm" class="d-flex" autocomplete="off">
-      <input name="username" class="form-control me-2" placeholder="Username">
-      <input name="password" class="form-control me-2" placeholder="Password"
+      <input name="username" class="form-control" placeholder="Username">
+      <input name="password" class="form-control" placeholder="Password"
              type="password">
-      <button class="btn btn-outline-success" type="submit">Login</button>
+      <button class="btn  btn-success" type="submit">Login</button>
     </form>
     <!--}-->
   </div>

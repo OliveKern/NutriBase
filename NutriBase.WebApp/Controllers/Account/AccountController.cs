@@ -7,7 +7,7 @@ using NutriBase.Logic.Services;
 
 namespace NutriBase.WebApp.Controllers.Account
 {
-    public class UsersController : BaseApiController
+    public class AccountController : BaseApiController
     {
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
@@ -30,6 +30,9 @@ namespace NutriBase.WebApp.Controllers.Account
         [HttpPost("register")]  //users/register
         public async Task<ActionResult<UserDto>> Register(UserDto user, ITokenService tokenService)
         {
+            if(user.Username == null || user.Password == null) 
+                return BadRequest("Missing Credentials. Please enter Username and Password");
+
             using var accountSrv = new AccountService();
 
             if (await accountSrv.UserExists(user.Username!)) return BadRequest("Username is already taken");
@@ -42,6 +45,9 @@ namespace NutriBase.WebApp.Controllers.Account
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(UserDto user, ITokenService tokenService)
         {
+            if(user.Username == null || user.Password == null) 
+                return BadRequest("Missing Credentials. Please enter Username and Password");
+
             using var accountSrv = new AccountService();
 
             var account = await accountSrv.Login(user, tokenService);

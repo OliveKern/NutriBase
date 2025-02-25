@@ -1,14 +1,20 @@
-/*html {
-    height: 62px;
-}*/
 .navbar {
-  height: 55px;
+  height: 60px;
 }
 
-/*.nav-tabs .nav-link {*/
-/*  border: none;*/
-  /*border-bottom: 1px solid white;
-  border-radius: 0;*/ /* No rounded corners */
-  /*color: white;*/ /* White text color */
-  /*margin: 10px
-}*/
+input {
+    width: 15vw;
+}
+
+.title-img {
+  margin-left: 2vw;
+  width: 55px;
+  height: 40px;
+}
+
+.title {
+  margin-left: 1vw;
+  font-size: 2vw;
+  font-weight: bold;
+}
+

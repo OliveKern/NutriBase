@@ -17,7 +17,7 @@ namespace NutriBase.Logic.Services
     {
         public async Task<IEnumerable<UserDto>> GetAllUsers()
         {
-            using var usersCtrl = new UsersController();
+            using var usersCtrl = new AccountController();
             var users = await usersCtrl.EntitySet.ToListAsync().ConfigureAwait(false);
             var userDtos = new List<UserDto>();
 
@@ -37,7 +37,7 @@ namespace NutriBase.Logic.Services
 
         public async Task<UserDto?> GetUserById(int id)
         {
-            using var usersCtrl = new UsersController();
+            using var usersCtrl = new AccountController();
             var user = await usersCtrl.EntitySet.FindAsync(id).ConfigureAwait(false);
 
             return user == null ? null : new UserDto
@@ -51,7 +51,7 @@ namespace NutriBase.Logic.Services
         public async Task<UserDto> Register(UserDto userDto, ITokenService tokenService)
         {
             using var hmac = new HMACSHA512();
-            using var usersCtrl = new UsersController();
+            using var usersCtrl = new AccountController();
 
             var user = new User
             {
@@ -71,7 +71,7 @@ namespace NutriBase.Logic.Services
 
         public async Task<UserDto?> Login(UserDto userDto, ITokenService tokenService)
         {
-            using var userCtrl = new UsersController();
+            using var userCtrl = new AccountController();
             var user = await userCtrl.EntitySet.FirstOrDefaultAsync(u => u.Username == userDto.Username);
 
             if(user != null)
@@ -105,7 +105,7 @@ namespace NutriBase.Logic.Services
 
         public async Task<bool> UserExists(string username)
         {
-            using var userCtrl = new UsersController();
+            using var userCtrl = new AccountController();
             return await userCtrl.EntitySet.AnyAsync(u => u.Username == username);
         }
     }

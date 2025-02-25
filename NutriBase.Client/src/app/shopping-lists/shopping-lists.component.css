@@ -1,28 +1,31 @@
 .flex-container {
   display: flex;
-  padding: 2vh 1vw 2vh 1vw;
+  padding: 1%;
 }
 
 .flex-child {
   border-radius: 10px;
-  flex: 1;
   background-color: white;
   border: solid;
-  border-color: black;
+  border-color: grey;
   height: 60vh;
 }
 
   .flex-child:first-child {
-    background-color: darkgray;
-    border-color: transparent;
-    padding: 10px;
-    flex: 0 0 43vw;
+/*    background-color: darkgray;
+    border-color: transparent;*/
+    padding: 1vh 1vw 1vh 1vw;
+    flex: 0 0 48vw;
   }
 
   .flex-child:last-child {
-    background-color: darkgray;
-    border-color: transparent;
-    margin-left: 10px;
+/*    background-color: darkgray;
+    border-color: transparent;*/
+    padding: 1vh 1vw 1vh 1vw;
+    margin-left: 1vw;
     flex: 0 0 25vw;
   }
 
+.selection {
+
+}

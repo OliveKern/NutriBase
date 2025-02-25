@@ -5,7 +5,7 @@ using NutriBase.Logic.Entities.Account;
 
 namespace NutriBase.Logic.Controllers.Accounts;
 
-public class UsersController : GenericController<Entities.Account.User>
+public class AccountController : GenericController<Entities.Account.User>
 {
 
 }

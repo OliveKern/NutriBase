@@ -52,7 +52,7 @@ public class ShoppingListsService : ServiceObject
             Usage = shoList.Usage,
             DueDate = shoList.DueDate,
             GoodsNumber = shoList.GoodsNumber,
-            CostNotAccurate = shoList.CostNotAccurate
+            CostNotAccurate = shoList.CostAccurate
         });
     }
 
