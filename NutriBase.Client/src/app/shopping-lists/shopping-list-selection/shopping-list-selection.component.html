@@ -39,9 +39,9 @@
       </tr> -->
       @for (item of shoppingLists(); track $index) {
         <tr (click)="selectShoppingList(item)">
-          <th scope="row">{{item.creationDate}}</th>
+          <th scope="row">{{item.creationDate | date:'dd.MM.yyyy'}}</th>
           <td>{{item.definition}}</td>
-          <td>{{item.goodsNumber}}</td>
+          <td>{{item.groceryNumber+item.householdItemNumber}}</td>
           <td>{{item.totalCost}}</td>
         </tr>
       }

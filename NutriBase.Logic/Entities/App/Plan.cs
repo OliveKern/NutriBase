@@ -16,6 +16,8 @@ public abstract class Plan : VersionEntity
 
     public decimal TotalCost => Groceries.Sum(x => x.Price ?? 0) + HouseholdItems.Sum(x => x.Price ?? 0);
     public bool CostAccurate => Groceries.All(x => x.Price != null) || HouseholdItems.All(x => x.Price != null);
+    public int GroceryNumber => Groceries.Count();
+    public int HouseholdItemNumber => HouseholdItems.Count();
     public DateTime CreationDate = DateTime.UtcNow;
 
     //NavProps

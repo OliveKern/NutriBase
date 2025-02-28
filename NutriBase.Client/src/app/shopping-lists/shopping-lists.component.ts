@@ -15,7 +15,7 @@ import { ShoppingList } from '../_shared/models/app/plan.model';
 export class ShoppingListsComponent implements OnInit {
   sLService = inject(ShoppingListsService);
   shoppingLists: ShoppingList[] = [];
-  selShopLi? = signal<ShoppingList | null>(null);
+  selShopLi? = signal<ShoppingList>(this.shoppingLists[0]);
 
   ngOnInit() {
     this.sLService.getShoppingLists().subscribe({
@@ -25,7 +25,8 @@ export class ShoppingListsComponent implements OnInit {
     })
   }
 
-  selectedShoppingListChanged(shoLi: ShoppingList) {
-    throw new Error('Method not implemented.');
-  }
+  // implement only when necessary
+  // selectedShoppingListChanged(shoLi: ShoppingList) {
+  //   this.selShopLi?.set(shoLi);
+  // }
 }

@@ -19,7 +19,8 @@ public class ShoppingListsService : ServiceObject
             throw new ArgumentNullException($"{nameof(shoListDto.Products)} are empty");
         }
 
-        var shoList = ShoListDtoToEntity(shoListDto);
+        var shoList = new ShoppingList();
+        shoList.CopyProperties(shoListDto);
 
         foreach (var product in shoListDto.Products.OfType<GroceryDto>())
         {
@@ -51,16 +52,9 @@ public class ShoppingListsService : ServiceObject
             TotalCost = shoList.TotalCost,
             Usage = shoList.Usage,
             DueDate = shoList.DueDate,
-            GoodsNumber = shoList.GoodsNumber,
+            GroceryNumber = shoList.GroceryNumber,
+            HouseholdItemNumber = shoList.HouseholdItemNumber,
             CostNotAccurate = shoList.CostAccurate
         });
-    }
-
-    private ShoppingList ShoListDtoToEntity(ShoppingListDto shoListDto)
-    {
-        var shoList = new ShoppingList();
-        shoListDto.CopyProperties(shoList);
-
-        return shoList;
     }
 }

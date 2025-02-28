@@ -1,10 +1,11 @@
 import { Component, input, output } from '@angular/core';
 import { ShoppingList } from '../../_shared/models/app/plan.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-shopping-list-selection',
   standalone: true,
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './shopping-list-selection.component.html',
   styleUrl: './shopping-list-selection.component.css'
 })
@@ -19,5 +20,4 @@ export class ShoppingListSelectionComponent {
   deleteShoppingList() {
     throw new Error('Method not implemented.');
   }
-
 }

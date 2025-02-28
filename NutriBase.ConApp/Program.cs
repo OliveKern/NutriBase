@@ -11,6 +11,9 @@ using NutriBase.Logic.Services;
 using NutriBase.Logic.Services.App;
 using Microsoft.Extensions.Configuration;
 using NutriBase.Logic.Models.Accounts;
+using Microsoft.EntityFrameworkCore;
+using NutriBase.Logic.DataContext;
+using NutriBase.Logic.Services.Base;
 
 namespace NutriBase.ConApp
 {
@@ -20,10 +23,51 @@ namespace NutriBase.ConApp
         {
             Console.WriteLine("TestingConApp");
 
-
             //ExtensionMethodTests();
             //await ControllerTests();
-            await InsertShoppingListTest();
+            //await InsertShoppingListTest();
+            await InsertDummyGroceries();
+            //await InsertDummyHouseholdItems();
+            //await InsertDummyShoppinLists();
+            //await InsertDummyRecipes();
+        }
+
+        private async static Task InsertDummyGroceries()
+        {
+            var groceryFaker = new Faker<Grocery>()
+                .RuleFor(g => g.Definition, f => f.Commerce.ProductName())
+                .RuleFor(g => g.Description, f => f.Commerce.ProductDescription())
+                .RuleFor(g => g.Price, f => f.Random.Decimal(1, 100))
+                .RuleFor(g => g.PackageSize, f => f.Commerce.ProductMaterial())
+                .RuleFor(g => g.KaloriesPer100Gram, f => f.Random.Int(1, 1000))
+                .RuleFor(g => g.ProteinPer100Gram, f => f.Random.Int(1, 1000))
+                .RuleFor(g => g.SugarPer100Gram, f => f.Random.Int(1, 1000))
+                .RuleFor(g => g.NutritionForm, f => f.PickRandom<Logic.Modules.Enumerations.NutritionForm>());
+
+            var groceries = groceryFaker.Generate(10);
+
+            var grocerySrv = new GroceryService();
+            foreach (var grocery in groceries)
+            {
+                var dto = new GroceryDto();
+                grocery.CopyProperties(dto);
+                await grocerySrv.InsertGroceryAsync(dto);
+            }
+        }
+
+        private async static void InsertDummyHouseholdItems()
+        {
+            throw new NotImplementedException();
+        }
+
+        private async static void InsertDummyShoppinLists()
+        {
+            throw new NotImplementedException();
+        }
+
+        private async static void InsertDummyRecipes()
+        {
+            throw new NotImplementedException();
         }
 
         private async static Task InsertShoppingListTest()

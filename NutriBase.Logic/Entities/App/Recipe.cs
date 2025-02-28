@@ -18,6 +18,4 @@ public class Recipe : Plan
     public int? Valuation { get; set; }
     public int Difficulty { get; set; } 
     public NutritionForm? NutritionForm { get; set; }
-
-    public int IngredientNumber { get; set; }
 }
