@@ -34,8 +34,20 @@ namespace NutriBase.ConApp
 
         private async static Task InsertDummyGroceries()
         {
+            var groceriesDefs = new List<string>({
+                "Milch",
+                "Eier",
+                "Brot",
+                "Käse",
+                "Wurst",
+                "Butter",
+                "Marmelade",
+                "Kaffee",
+                "Tee",
+                "Zucker",
+            })
             var groceryFaker = new Faker<Grocery>()
-                .RuleFor(g => g.Definition, f => f.Commerce.ProductName())
+                .RuleFor(g => g.Definition, f => f.PickRandom(groceriesDefs))
                 .RuleFor(g => g.Description, f => f.Commerce.ProductDescription())
                 .RuleFor(g => g.Price, f => f.Random.Decimal(1, 100))
                 .RuleFor(g => g.PackageSize, f => f.Commerce.ProductMaterial())
