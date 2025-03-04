@@ -34,29 +34,59 @@ namespace NutriBase.ConApp
 
         private async static Task InsertDummyGroceries()
         {
-            var groceriesDefs = new List<string>({
-                "Milch",
-                "Eier",
-                "Brot",
-                "Käse",
-                "Wurst",
-                "Butter",
-                "Marmelade",
-                "Kaffee",
-                "Tee",
-                "Zucker",
-            })
-            var groceryFaker = new Faker<Grocery>()
-                .RuleFor(g => g.Definition, f => f.PickRandom(groceriesDefs))
-                .RuleFor(g => g.Description, f => f.Commerce.ProductDescription())
-                .RuleFor(g => g.Price, f => f.Random.Decimal(1, 100))
-                .RuleFor(g => g.PackageSize, f => f.Commerce.ProductMaterial())
-                .RuleFor(g => g.KaloriesPer100Gram, f => f.Random.Int(1, 1000))
-                .RuleFor(g => g.ProteinPer100Gram, f => f.Random.Int(1, 1000))
-                .RuleFor(g => g.SugarPer100Gram, f => f.Random.Int(1, 1000))
-                .RuleFor(g => g.NutritionForm, f => f.PickRandom<Logic.Modules.Enumerations.NutritionForm>());
+            var groceries = new List<Grocery>();
+            groceries.Add(new Grocery
+            {
+                Definition = "Milch",
+                Price = 1.99m,
+                PackageSize = "1L",
+                KaloriesPer100Gram = 42,
+                ProteinPer100Gram = 3.4,
+                SugarPer100Gram = 5,
+                NutritionForm = Logic.Modules.Enumerations.NutritionForm.Vegetarian
+            });
+            groceries.Add(new Grocery
+            {
+                Definition = "Eier",
+                Price = 2.99m,
+                PackageSize = "10 Stück",
+                KaloriesPer100Gram = 155,
+                ProteinPer100Gram = 13,
+                SugarPer100Gram = 1.1,
+                NutritionForm = Logic.Modules.Enumerations.NutritionForm.Vegetarian
+            });
+            groceries.Add(new Grocery
+            {
+                Definition = "Schwarzbrot",
+                Description = "Brotprodukt",
+                Price = 3.99m,
+                PackageSize = "1kg",
+                NutritionForm = Logic.Modules.Enumerations.NutritionForm.Vegan
+            });
+            //{
+            //    "Milch",
+            //    "Eier",
+            //    "Schwarzbrot",
+            //    "Butter",
+            //    //"Käse",
+            //    //"Wurst",
+            //    //"Marmelade",
+            //    //"Kaffee",
+            //    //"Tee",
+            //    //"Zucker",
+            //};
 
-            var groceries = groceryFaker.Generate(10);
+            //var groceryFaker = new Faker<Grocery>()
+            //    .RuleFor(g => g.Definition, f => f.PickRandom(groceriesDefs))
+            //    .RuleFor(g => g.Description, f => f.Commerce.ProductDescription())
+            //    .RuleFor(g => g.Price, f => f.Random.Decimal(1, 100))
+            //    .RuleFor(g => g.PackageSize, f => f.Commerce.ProductMaterial())
+            //    .RuleFor(g => g.KaloriesPer100Gram, f => f.Random.Int(1, 1000))
+            //    .RuleFor(g => g.ProteinPer100Gram, f => f.Random.Int(1, 1000))
+            //    .RuleFor(g => g.SugarPer100Gram, f => f.Random.Int(1, 1000))
+            //    .RuleFor(g => g.NutritionForm, f => f.PickRandom<Logic.Modules.Enumerations.NutritionForm>());
+
+            //var groceries = groceryFaker.Generate(10);
 
             var grocerySrv = new GroceryService();
             foreach (var grocery in groceries)

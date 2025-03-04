@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
 })
 export class ShoppingListComponent {
   shoppingList = input<ShoppingList>(new ShoppingList('Shopping List 1', new Date(), [], [], 0, 0, 0, new Date(), ''));
-newGrocery: any;
+  newGrocery: any;
 
   addGrocery() {
     this.shoppingList().groceries.push(this.newGrocery);
