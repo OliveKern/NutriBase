@@ -6,11 +6,10 @@ import { ShoppingListsService } from '../_services/app/shopping-lists.service';
 import { ShoppingList } from '../_shared/models/app/plan.model';
 
 @Component({
-  selector: 'app-shopping-lists',
-  standalone: true,
-  imports: [ShoppingListComponent, ShoppingListToolsComponent, ShoppingListSelectionComponent],
-  templateUrl: './shopping-lists.component.html',
-  styleUrl: './shopping-lists.component.css'
+    selector: 'app-shopping-lists',
+    imports: [ShoppingListComponent, ShoppingListToolsComponent, ShoppingListSelectionComponent],
+    templateUrl: './shopping-lists.component.html',
+    styleUrl: './shopping-lists.component.css'
 })
 export class ShoppingListsComponent implements OnInit {
   sLService = inject(ShoppingListsService);

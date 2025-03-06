@@ -4,11 +4,10 @@ import { Grocery, HouseholdItem } from '../../_shared/models/base/product.model'
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-shopping-list',
-  templateUrl: './shopping-list.component.html',
-  standalone: true,
-  imports: [DatePipe],
-  styleUrl: './shopping-list.component.css'
+    selector: 'app-shopping-list',
+    templateUrl: './shopping-list.component.html',
+    imports: [DatePipe],
+    styleUrl: './shopping-list.component.css'
 })
 export class ShoppingListComponent {
   shoppingList = input<ShoppingList>(new ShoppingList('Shopping List 1', new Date(), [], [], 0, 0, 0, new Date(), ''));
