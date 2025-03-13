@@ -1,74 +1,3 @@
-//custom styling
-
-ion-title {
-  display: flex;
-  align-items: center; /* Vertically centers content */
-  justify-content: center; /* Horizontally centers text */
-}
-ion-title h1 {
-  margin: 0; /* Removes default margin */
-  font-size: 1.5rem; /* Adjust size as needed */
-}
-
-ion-list-header {
-  margin: 0 0 60px 15px;
-}
-
-ion-split-pane {
-  --border: none;
-}
-
-ion-menu {
-  --background: #f8f8f8;
-  --side-width: 250px;
-}
-ion-menu .ion-content, .full-height {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-ion-menu .ion-list.full-height {
-  flex-grow: 1;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-ion-item ion-label {
-  font-size: 20px;
-}
-
-ion-note {
-  display: inline-block;
-  font-size: 16px;
-
-  color: var(--ion-color-medium-shade);
-}
-
-ion-item.selected {
-  --color: var(--ion-color-success);
-}
-
-// /* Adjust the width for smaller screens */
-// @media (max-width: 800px) {
-//   ion-item {
-//     --width: 20%;  /* Make the menu take up 60% of the screen width on smaller screens */
-//   }
-// }
-
-// /* Optionally: Adjust for very small screens (e.g., mobile) */
-// @media (max-width: 500px) {
-//   ion-item {
-//     --width: 20%;  /* On mobile, make the menu 80% of the screen width */
-//   }
-// }
-
-// ion-item .ion-list.full-height {
-//   flex-grow: 1;
-//   padding-top: 0;
-//   padding-bottom: 0;
-// }
-
-//default styling
 ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }
@@ -178,3 +107,13 @@ ion-menu.ios ion-note {
   margin-bottom: 8px;
 }
 
+ion-note {
+  display: inline-block;
+  font-size: 16px;
+
+  color: var(--ion-color-medium-shade);
+}
+
+ion-item.selected {
+  --color: var(--ion-color-primary);
+}

@@ -1,34 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
-
-// import { IonIcon } from '@ionic/angular/standalone';
-// import { addIcons } from 'ionicons';
-// import { logoIonic } from 'ionicons/icons';
-
-
-
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  standalone: true,
-  imports: [ IonicModule, RouterModule ]
+  standalone: false,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   public appPages = [
-    { title: 'Home', url: '/home', icon: 'home' },
-    { title: 'Register', url: '/register', icon: 'register' },
-    { title: 'Recipes', url: '/recipes', icon: 'recipe' },
-    { title: 'Shopping lists', url: '/shopping-lists', icon: 'shopping-lists' },
-    { title: 'Products', url: '/products', icon: 'products' },
+    { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
+    { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
+    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
+    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
+    { title: 'Trash', url: '/folder/trash', icon: 'trash' },
+    { title: 'Spam', url: '/folder/spam', icon: 'warning' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  
-  constructor() {
-    // addIcons({logoIonic});
-  }
-
-  ngOnInit() {
-  }
+  constructor() {}
 }

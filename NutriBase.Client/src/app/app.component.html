@@ -1,100 +1,15 @@
 <ion-app>
-    <ion-menu  contentId="main-content" type="overlay">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title><h3>Lifestyle Menu</h3></ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding full-height">
-        <ion-list class="full-height">
-          <ion-list-header class="ion-text-center"><h4>Get your new life started!</h4></ion-list-header>
-
-          @for (p of appPages; track p; let i = $index) {
-            <ion-menu-toggle auto-hide="false">
-              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-                <ion-icon aria-hidden="false" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                <ion-label>{{ p.title }}</ion-label>
-              </ion-item>
-            </ion-menu-toggle>
-          }
-        </ion-list>
-
-      </ion-content>
-    </ion-menu>
-
-    
-    
-    <div class="ion-page" id="main-content">
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-menu-button alwaysShow="true"></ion-menu-button>
-          </ion-buttons>
-          <ion-title><h1>NutriBase</h1></ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-          <ion-router-outlet></ion-router-outlet>
-      </ion-content>
-    </div>
-</ion-app>
-
-<!-- <ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu  contentId="main-content">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title><h1>NutriBase</h1></ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding full-height">
-        <ion-list id="inbox-list" class="full-height">
-          <ion-list-header class="ion-text-center"><h3>Lifestyle Menu</h3></ion-list-header>
-          <ion-note>Get your life started!</ion-note>
-          @for (p of appPages; track p; let i = $index) {
-            <ion-menu-toggle auto-hide="false">
-              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-                <ion-icon aria-hidden="false" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                <ion-label>{{ p.title }}</ion-label>
-              </ion-item>
-            </ion-menu-toggle>
-          }
-          <ion-tab-button>
-            <ion-icon name="search"></ion-icon>
-          </ion-tab-button>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-
-    
-    
-    <div class="ion-page" id="main-content">
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-menu-button alwaysShow="true"></ion-menu-button>
-          </ion-buttons>
-          <ion-title></ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-          <ion-router-outlet></ion-router-outlet>
-      </ion-content>
-    </div>
-  </ion-split-pane>
-</ion-app> -->
-<!-- <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header class="ion-text-center"><h1>NutriBase</h1></ion-list-header>
-          <ion-note>Get your life started!</ion-note>
+          <ion-list-header>Inbox</ion-list-header>
+          <ion-note>hi&#64;ionicframework.com</ion-note>
 
           @for (p of appPages; track p; let i = $index) {
             <ion-menu-toggle auto-hide="false">
               <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-                <ion-icon aria-hidden="false" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
                 <ion-label>{{ p.title }}</ion-label>
               </ion-item>
             </ion-menu-toggle>
@@ -115,4 +30,4 @@
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
-</ion-app> -->
+</ion-app>
