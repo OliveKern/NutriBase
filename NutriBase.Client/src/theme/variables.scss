@@ -1,2 +1,9 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+ion-toolbar {
+    height: 10vh;
+    align-content: center;
+    min-height: 60px;
+    --background: var(--ion-color-tertiary);
+    --color: var(--ion-color-light);
+}
