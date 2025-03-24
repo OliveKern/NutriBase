@@ -1,20 +1,48 @@
 //custom
-h1 {
-  font-weight: bold;
+.toolbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
 }
 
-ion-menu {
-  width: 250px; 
+.profile-container {
+  display: flex;
+  align-items: center;
 }
+
+ion-toolbar ion-icon {
+  width: 40px;
+  height: 40px;
+}
+
+ion-header {
+  align-items: center;
+}
+
+ion-title {
+  font-size: 2rem;
+  font-weight: bold;
+  align-items: center;
+  height: 50%
+}
+
+app-nav {
+  height: 10%;
+}
+
+ion-router-outlet {
+  height: 100%;
+}
+
+// ion-menu {
+//   width: 200px; 
+// }
 
 ion-list {
   margin: 0;
   padding: 0;
   height: 90%;
-}
-
-ion-avatar {
-  height: 5%;
 }
 
 //default

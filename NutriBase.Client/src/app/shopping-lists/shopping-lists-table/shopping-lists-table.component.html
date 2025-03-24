@@ -1,0 +1,29 @@
+<div class="main-container">
+  <!-- <p>
+    shopping-lists-table works!
+  </p> -->
+  <ion-card>
+    <ion-grid>
+      <ion-row class="header">
+        <ion-col><strong>Datum</strong></ion-col>
+        <ion-col><strong>Name</strong></ion-col>
+        <ion-col><strong>Products</strong></ion-col>
+        <ion-col><strong>Price</strong></ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    
+      @for (item of shoppingLists(); track $index) {
+        <ion-row class="table-row" (click)="selectShoppingList(item)">
+          <ion-col>{{ item.creationDate | date:'dd.MM.yyyy' }}</ion-col>
+          <ion-col>{{ item.definition }}</ion-col>
+          <ion-col>{{ item.groceryNumber + item.householdItemNumber }}</ion-col>
+          <ion-col>{{ item.totalCost }}</ion-col>
+          <ion-col>
+            <ion-button color="primary">Select</ion-button>
+          </ion-col>
+        </ion-row>
+      }
+    </ion-grid>
+  </ion-card>
+
+</div>

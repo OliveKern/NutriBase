@@ -1,0 +1,14 @@
+<div class="main-container">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Tools</ion-card-title>
+      <ion-card-subtitle></ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      @for (btn of buttons(); track $index) {
+        <ion-button color="{{btn.color}}">{{btn.type}}</ion-button>
+      }
+    </ion-card-content>
+  </ion-card>
+</div>

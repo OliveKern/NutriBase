@@ -1,11 +1,5 @@
 <div class="page-container">
   <ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button alwaysShow="true"></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Shopping lists</ion-title>
-    </ion-toolbar>
   </ion-header>
 
   <ion-content [fullscreen]="true">
@@ -14,5 +8,20 @@
         <ion-title size="large">shopping-lists</ion-title>
       </ion-toolbar>
     </ion-header>
+    <ion-grid>
+      <ion-row class="shoLi-row">
+        <ion-col size="12" size-md="8">
+          <app-shopping-list class="entity"></app-shopping-list>
+        </ion-col>
+        <ion-col size="12" size-md="4">
+          <app-tool-card></app-tool-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <app-shopping-lists-table class="table" [shoppingLists]="shoppingLists"></app-shopping-lists-table>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-content>
 </div>

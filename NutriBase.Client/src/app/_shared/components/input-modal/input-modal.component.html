@@ -1,0 +1,62 @@
+<!-- <ion-button color="success" id="open-login" expand="block">Login</ion-button>
+<ion-modal trigger="open-login">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button>Cancel</ion-button>
+        </ion-buttons>
+        <ion-title>Welcome</ion-title>
+        <ion-buttons slot="end">
+          <ion-button [strong]="true">Confirm</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-item>
+        <ion-input
+          label="Enter your name"
+          labelPlacement="stacked"
+          type="text"
+          placeholder="Your name"
+        ></ion-input>
+      </ion-item>
+    </ion-content>
+  </ng-template>
+</ion-modal> -->
+
+<ion-button
+  [color]="GetButtonColor()"
+  id="'open-' + {{ formMode() }}"
+  expand="block"
+  >{{ formMode() }}</ion-button>
+<ion-modal trigger="'open-' + {{ formMode() }}">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button>Cancel</ion-button>
+        </ion-buttons>
+        <ion-title>{{
+          formMode() === "login" ? "Login" : "Sign Up"
+        }}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button [strong]="true">Confirm</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding" [formGroup]="form">
+      @for (controlKey of formControlKeys; track controlKey) {
+      <ion-item>
+        <ion-label position="floating">{{ controlKey.toUpperCase() }}</ion-label>
+        <ion-input type="text" [formControlName]="controlKey"></ion-input>
+      </ion-item>
+      }
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- <ion-item>
+  <ion-label position="floating" color="primary">Username</ion-label>
+  <ion-input type="text" formControlName="email" class="form-controll" required></ion-input>
+</ion-item> -->

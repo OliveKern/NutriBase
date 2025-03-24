@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  ApiPaths: {
+    //server
+    //local
+    //restApiPath: Releasepath
+    restApiPath: "https://localhost:5001/api",
+    // mapStyleApiPath: "https://api.maptiler.com/maps/streets-v2/style.json"
+},
+ApiKeys: {
+    mapStyleApiKey: "rOXzftEMmwaJC2phjkPH"
+}
 };
 
 /*

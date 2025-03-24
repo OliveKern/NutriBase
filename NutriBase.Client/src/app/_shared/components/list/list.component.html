@@ -1,0 +1,14 @@
+<div class="main-container">
+  <ion-list>
+    @for (item of inputArray(); track $index) {
+      <ion-item>
+        <span>{{item.definition}}</span>
+        <ion-button color="danger" slot="end">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+    }
+  </ion-list>
+</div>
+
+

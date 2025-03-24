@@ -1,0 +1,34 @@
+<div class="nav-container">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button alwaysShow="true"></ion-menu-button>
+    </ion-buttons>
+    <div class="toolbar-container">
+      <ion-title>{{ currentPageTitle }}</ion-title>
+      <!-- <div class="input-container">
+        <ion-input
+          class="padding"
+          ype="email"
+          fill="outline"
+          placeholder="Email"
+        />
+        <ion-input type="password" fill="outline" placeholder="Password" />
+      </div>
+      | -->
+      <div class="login-container">
+        <!-- <input type="text" id="email" placeholder="Email" required/> -->
+        <!-- <input type="password" id="password" placeholder="Password" required/>        <ion-button color="success">Login</ion-button> -->
+         <ion-grid>
+          <ion-row>
+            <ion-col>
+              <app-input-modal formMode="login"></app-input-modal>
+            </ion-col>
+            <ion-col>
+              <app-input-modal formMode="signup"></app-input-modal>
+            </ion-col>
+          </ion-row>
+         </ion-grid>
+      </div>
+    </div>
+  </ion-toolbar>
+</div>

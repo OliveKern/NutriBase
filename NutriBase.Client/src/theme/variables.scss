@@ -2,8 +2,16 @@
 // http://ionicframework.com/docs/theming/
 ion-toolbar {
     height: 10vh;
-    align-content: center;
     min-height: 60px;
-    --background: var(--ion-color-tertiary);
-    --color: var(--ion-color-light);
+    max-height: 100px;
+    align-content: center;
+    // --background: var(--ion-color-light);
+    // --color: var(--ion-color-dark);
+    --background: lightgray;
+    --color: var(--ion-color-dark);
+}
+
+/* Für Webkit-Browser (Chrome, Safari, Edge) */
+ion-content::part(scroll)::-webkit-scrollbar {
+    display: none;
 }
