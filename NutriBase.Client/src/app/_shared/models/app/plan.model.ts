@@ -3,25 +3,26 @@ import { Grocery, HouseholdItem } from "../base/product.model";
 
 export class Plan {
     definition: string;
-    creationDate: Date;
+    modifiedDate: Date;
     groceries: Grocery[];
     householdItems: HouseholdItem[];
     userId: number;
 
     private _totalCost: number = 0;
     private _costAccurate: boolean = true;
-    private _groceryNumber: number = 0;
-    private _householdItemNumber: number = 0;
+    // private _groceryNumber: number = 0;
+    // private _householdItemNumber: number = 0;
 
-    constructor(definition: string,
-        creationDate: Date,
-        groceries: Grocery[],
-        householdItems: HouseholdItem[],
-        groceryNumber: number,
-        householdItemNumber: number,
-        userId: number) {
+    constructor(
+        definition: string = '',
+        creationDate: Date = new Date(),
+        groceries: Grocery[] = [],
+        householdItems: HouseholdItem[] = [],
+        // groceryNumber: number,
+        // householdItemNumber: number,
+        userId: number = 0) {
         this.definition = definition;
-        this.creationDate = creationDate;
+        this.modifiedDate = creationDate;
         this.groceries = groceries;
         this.householdItems = householdItems;
         this.userId = userId;
@@ -42,17 +43,19 @@ export class Plan {
     }
 
     get groceryNumber(): number {
-        if (!this._groceryNumber) {
-            this._groceryNumber = this.groceries.length;
-        }
-        return this._groceryNumber;
+        // if (!this._groceryNumber) {
+        //     this._groceryNumber = this.groceries.length;
+        // }
+        // return this._groceryNumber;
+        return this.groceries.length;
     }
 
     get householdItemNumber(): number {
-        if (!this._householdItemNumber) {
-            this._householdItemNumber = this.groceries.length;
-        }
-        return this._householdItemNumber;
+        // if (!this._householdItemNumber) {
+        //     this._householdItemNumber = this.groceries.length;
+        // }
+        // return this._householdItemNumber;
+        return this.householdItems.length; 
     }  
 
     addProduct(product: Grocery | HouseholdItem) {
@@ -72,26 +75,30 @@ export class Plan {
 }
 
 export class ShoppingList extends Plan {
-    dueDate: Date;
+    dueDate: Date | null;
     usage: string;
 
-    constructor(definition: string,
-        creationDate: Date,
+    constructor(
+        definition: string,
+        modifiedDate: Date,
         groceries: Grocery[],
         householdItems: HouseholdItem[],
         groceryNumber: number,
         householdItemNumber: number,
         userId: number,
-        dueDate: Date,
-        usage: string) {
-        super(definition,
-            creationDate,
-            groceries,
-            householdItems,
-            groceryNumber,
-            householdItemNumber,
-            userId);
-        this.dueDate = dueDate;
+        dueDate: Date | null = null,
+        usage: string = ''
+    ) {
+        super(
+            // definition,
+            // modifiedDate,
+            // groceries,
+            // householdItems,
+            // groceryNumber,
+            // householdItemNumber,
+            // userId
+        );
+        this.dueDate = dueDate ?? null;
         this.usage = usage;
     }
 }
@@ -104,26 +111,30 @@ export class Recipe extends Plan {
     difficulty: number;
     nutritionForm: NutritionForm;
 
-    constructor(definition: string,
-        creationDate: Date,
+    constructor(
+        definition: string,
+        modifiedDate: Date,
         groceries: Grocery[],
         householdItems: HouseholdItem[],
         groceryNumber: number,
         householdItemNumber: number,
         userId: number,
-        description: string,
-        author: string,
-        durationInMin: number,
-        valuation: number,
-        difficulty: number,
-        nutritionForm: NutritionForm,) {
-        super(definition,
-            creationDate,
-            groceries,
-            householdItems,
-            groceryNumber,
-            householdItemNumber,
-            userId);
+        description: string = '',
+        author: string = '',
+        durationInMin: number = 0,
+        valuation: number = 0,
+        difficulty: number = 0,
+        nutritionForm: NutritionForm = NutritionForm.NotSpecified
+    ) {
+        super(
+            // definition,
+            // modifiedDate,
+            // groceries,
+            // householdItems,
+            // groceryNumber,
+            // householdItemNumber,
+            // userId
+        );
         this.description = description;
         this.author = author;
         this.durationInMin = durationInMin;

@@ -25,11 +25,12 @@ namespace NutriBase.ConApp
 
             //ExtensionMethodTests();
             //await ControllerTests();
-            //await InsertShoppingListTest();
-            await InsertDummyGroceries();
+            await InsertShoppingListTest();
+            //await InsertDummyGroceries();
             //await InsertDummyHouseholdItems();
-            //await InsertDummyShoppinLists();
+            //await InsertDummyShoppingLists();
             //await InsertDummyRecipes();
+            //await RegisterUser();
         }
 
         private async static Task InsertDummyGroceries()
@@ -102,7 +103,7 @@ namespace NutriBase.ConApp
             throw new NotImplementedException();
         }
 
-        private async static void InsertDummyShoppinLists()
+        private async static void InsertDummyShoppingLists()
         {
             throw new NotImplementedException();
         }
@@ -118,7 +119,7 @@ namespace NutriBase.ConApp
 
             var shoListDto = new ShoppingListDto
             {
-                UserId = 13,
+                UserId = 14,
                 Definition = "TestDef",
                 Usage = "TestUsage",
                 DueDate = DateTime.Now + TimeSpan.FromDays(7)
@@ -185,6 +186,11 @@ namespace NutriBase.ConApp
                 $"{testGrocery.SugarPer100Gram}," +
                 $"{testGrocery.NutritionForm}"
                 );
+        }
+
+        private static async Task RegisterUser()
+        {
+            throw new NotImplementedException();
         }
 
         private static void ExtensionMethodTests()

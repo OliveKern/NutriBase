@@ -20,7 +20,7 @@ public class ShoppingListsService : ServiceObject
         }
 
         var shoList = new ShoppingList();
-        shoList.CopyProperties(shoListDto);
+        shoListDto.CopyProperties(shoList);
 
         foreach (var product in shoListDto.Products.OfType<GroceryDto>())
         {
@@ -51,6 +51,7 @@ public class ShoppingListsService : ServiceObject
             Definition = shoList.Definition,
             TotalCost = shoList.TotalCost,
             Usage = shoList.Usage,
+            ModifiedDate = shoList.ModifiedDate,
             DueDate = shoList.DueDate,
             GroceryNumber = shoList.GroceryNumber,
             HouseholdItemNumber = shoList.HouseholdItemNumber,

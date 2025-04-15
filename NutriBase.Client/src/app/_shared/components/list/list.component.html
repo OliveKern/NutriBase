@@ -3,7 +3,7 @@
     @for (item of inputArray(); track $index) {
       <ion-item>
         <span>{{item.definition}}</span>
-        <ion-button color="danger" slot="end">
+        <ion-button color="danger" slot="end" (click)="deleteItem(item)">
           <ion-icon name="trash"></ion-icon>
         </ion-button>
       </ion-item>

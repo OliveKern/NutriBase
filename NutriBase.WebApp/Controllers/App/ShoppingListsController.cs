@@ -16,7 +16,7 @@ namespace NutriBase.WebApp.Controllers.App
             return Ok(shoppingList);
         }
 
-        [HttpGet]
+        [HttpGet("GetShoppingLists")]
         public async Task<ActionResult<IEnumerable<ShoppingListDto>>> GetShoppingLists()
         {
             var shoppingLists = await shopListSrv.GetAllShoppingListsAsync();

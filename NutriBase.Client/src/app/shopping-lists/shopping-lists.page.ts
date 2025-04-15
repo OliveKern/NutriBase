@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 import { ShoppingListsTableComponent } from "./shopping-lists-table/shopping-lists-table.component";
@@ -19,7 +19,7 @@ export class ShoppingListsPage implements OnInit {
   
   shoppingLists: ShoppingList[] = [];
   products: Product[] = [];
-  selShoLi? = signal<ShoppingList>(this.shoppingLists[0]);
+  selShoLi = signal<ShoppingList>(new ShoppingList('New Shopping List', new Date(), [], [], 0, 0, 0));
 
   constructor() { }
 
@@ -30,5 +30,11 @@ export class ShoppingListsPage implements OnInit {
       complete: () => console.log("Shopping lists loaded!")
     })
   }
+
+  SetSelShoLi(selShoLi: ShoppingList) {
+    this.selShoLi.set(selShoLi);
+    console.log('Selected Shopping List:', selShoLi);
+  }
+
 
 }

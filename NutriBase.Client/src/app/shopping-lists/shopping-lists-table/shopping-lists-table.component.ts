@@ -20,6 +20,7 @@ export class ShoppingListsTableComponent  implements OnInit {
 
   selectShoppingList(shoLi: ShoppingList) {
     this.selShoLi.emit(shoLi);
+    console.log('Selected Shopping List:', shoLi);
   }
 
   deleteShoppingList() {

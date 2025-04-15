@@ -3,9 +3,25 @@
   justify-content: center;
 }
 
+.table-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.table-row:hover {
+  background-color: #f0f0f0;
+}
+.table-row:active {
+  background-color: #dcdcdc;
+}
+
 ion-card {
   width: 100%;
 }
+
+// ion-button {
+//   margin: 0;
+//   padding: 0;
+// }
 
 .header {
   border-bottom: solid;

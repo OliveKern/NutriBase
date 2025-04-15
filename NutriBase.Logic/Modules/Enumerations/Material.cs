@@ -2,6 +2,7 @@ namespace NutriBase.Logic.Modules.Enumerations;
 
 public enum Material
 {
+    NotSpecified = -1,
     Plastic = 0,
     Paper = 1,
     Wood = 2,

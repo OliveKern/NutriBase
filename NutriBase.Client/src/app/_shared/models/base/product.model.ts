@@ -10,7 +10,8 @@ export class Product {
     recipes: Recipe[];
     shoppingLists: ShoppingList[];
 
-    constructor(definition: string,
+    constructor(
+        definition: string,
         description: string,
         price: number,
         packageSize: string,

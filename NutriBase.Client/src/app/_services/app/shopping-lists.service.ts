@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ShoppingListsService {
-  url: string = environment.ApiPaths.restApiPath + 'shopping-lists';
+  url: string = environment.ApiPaths.restApiPath + '/shoppinglists';
   private http = inject(HttpClient);
 
   constructor() { }

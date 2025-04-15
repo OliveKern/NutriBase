@@ -7,7 +7,12 @@
 
     <ion-card-content>
       @for (btn of buttons(); track $index) {
-        <ion-button color="{{btn.color}}">{{btn.type}}</ion-button>
+        <!-- @if (btn.routerLink.length > 0) { -->
+          <ion-button color="{{btn.color}}" [routerLink]="btn.routerLink">{{btn.type}}</ion-button>
+        <!-- }
+        @else {
+          <ion-button color="{{btn.color}}">{{btn.type}}</ion-button>
+        } -->
       }
     </ion-card-content>
   </ion-card>

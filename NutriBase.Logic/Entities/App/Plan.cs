@@ -18,7 +18,7 @@ public abstract class Plan : VersionEntity
     public bool CostAccurate => Groceries.All(x => x.Price != null) || HouseholdItems.All(x => x.Price != null);
     public int GroceryNumber => Groceries.Count();
     public int HouseholdItemNumber => HouseholdItems.Count();
-    public DateTime CreationDate = DateTime.UtcNow;
+    public DateTime ModifiedDate { get; set; }
 
     //NavProps
     public List<Grocery> Groceries { get; set; } = new();

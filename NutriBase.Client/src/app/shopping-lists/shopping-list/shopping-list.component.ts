@@ -2,8 +2,8 @@ import { DatePipe } from '@angular/common';
 import { Component, input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { ShoppingList } from 'src/app/_shared/models/app/plan.model';
-import { Grocery } from 'src/app/_shared/models/base/product.model';
+import { Plan, ShoppingList } from 'src/app/_shared/models/app/plan.model';
+import { Grocery, HouseholdItem } from 'src/app/_shared/models/base/product.model';
 import { ListComponent } from "../../_shared/components/list/list.component";
 import { NutritionForm } from 'src/app/_shared/enums/nutritionForm.enum';
 
@@ -15,8 +15,19 @@ import { NutritionForm } from 'src/app/_shared/enums/nutritionForm.enum';
   imports: [IonicModule, FormsModule, DatePipe, ListComponent]
 })
 export class ShoppingListComponent  implements OnInit {
-  shoppingList = input<ShoppingList>(new ShoppingList('New Shopping List', new Date(), [], [], 0, 0, 0, new Date(), ''));
-  newGrocery: Grocery | any;
+  shoppingList = input<ShoppingList>(new ShoppingList('New Shopping List', new Date(), [], [], 0, 0, 0));
+  newGrocery: Grocery = new Grocery(
+    '', // definition
+    '', // description
+    0,  // price
+    '', // packageSize
+    [], // recipes
+    [], // shoppingLists
+    0,  // kaloriesPer100g
+    0,  // proteinPer100g
+    0,  // sugarPer100g
+    NutritionForm.NotSpecified // nutritionForm
+  );
   testArray: Grocery[] = [{
     definition: 'test 1', price: 50, kaloriesPer100g: 15,
     proteinPer100g: 0,
@@ -40,15 +51,45 @@ export class ShoppingListComponent  implements OnInit {
   
   constructor() { }
 
-  addGrocery() {
-    this.shoppingList().groceries.push(this.newGrocery);
-    this.newGrocery = ''; 
+  addGrocery() {  
+    const grocery = new Grocery(
+      this.newGrocery.definition,
+      this.newGrocery.description,
+      this.newGrocery.price,
+      this.newGrocery.packageSize,
+      this.newGrocery.recipes,
+      this.newGrocery.shoppingLists,
+      this.newGrocery.kaloriesPer100g,
+      this.newGrocery.proteinPer100g,
+      this.newGrocery.sugarPer100g,
+      this.newGrocery.nutritionForm
+    );
+    grocery.shoppingLists.push(this.shoppingList()!);
+    this.shoppingList()!.addProduct(grocery);
+    console.log(this.shoppingList());
+    this.newGrocery = this.ResetNewGrocery(this.newGrocery);
   }
 
-  deleteGrocery(grocery: Grocery) {
-    throw new Error('Method not implemented.');
+  deleteGrocery(item: Grocery | HouseholdItem) {
+    console.log(item);
+    this.shoppingList()!.removeProduct(item);
+  }
+
+  ResetNewGrocery(grocery: Grocery) : Grocery {
+    return grocery = {
+      definition: '', 
+      price: 0, 
+      kaloriesPer100g: 0,
+      proteinPer100g: 0,
+      sugarPer100g: 0,
+      nutritionForm: NutritionForm.NotSpecified,
+      description: '',
+      packageSize: '',
+      recipes: [],
+      shoppingLists: []
+    };
   }
 
   ngOnInit() {}
-
 }
+

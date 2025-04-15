@@ -4,7 +4,7 @@
       <ion-card-title>
         <ion-input [(ngModel)]="shoppingList().definition" label="Title" label-placement="floating" helperText="Give your Shopping List a name"></ion-input>
       </ion-card-title>
-      <ion-card-subtitle>{{shoppingList().creationDate | date: 'dd.MM.yyyy'}}</ion-card-subtitle>
+      <ion-card-subtitle>{{shoppingList().modifiedDate | date: 'dd.MM.yyyy'}}</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
@@ -20,8 +20,9 @@
               </ion-item> -->
             <!-- } 
           </ion-list> -->
-            <app-list [inputArray]="testArray"></app-list>
-            <ion-input placeholder="New Grocery" fill="solid"></ion-input>
+            <!-- <app-list [inputArray]="testArray"></app-list> -->
+            <app-list [inputArray]="shoppingList().groceries" (item)="deleteGrocery($event)"></app-list>
+            <ion-input [(ngModel)]="newGrocery.definition" placeholder="New Grocery" fill="solid" (keydown.enter)="addGrocery()"></ion-input>
         </ion-card-content>
       </ion-card>
     </ion-card-content>

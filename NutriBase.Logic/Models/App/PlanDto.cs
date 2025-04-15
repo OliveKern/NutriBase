@@ -13,7 +13,7 @@ abstract public class PlanDto : VersionModel
     public bool? CostNotAccurate { get; set; }
     public int GroceryNumber { get; set; }
     public int HouseholdItemNumber { get; set; }
-    public DateTime? CreationDate { get; set; }
+    public DateTime? ModifiedDate { get; set; }
 
     public List<ProductDto> Products { get; set; } = new();
 }

@@ -1,4 +1,5 @@
 import { Component, computed, input, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -6,24 +7,28 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './tool-card.component.html',
   styleUrls: ['./tool-card.component.scss'],
   standalone: true,
-  imports: [IonicModule]
+  imports: [IonicModule, RouterModule]
 })
 export class ToolCardComponent  implements OnInit {
   page = input<string>("shopping-list");
+  defaultButtons: {type: string, color: string, click?: string, routerLink?: string}[] = [
+    { type: 'Save', color: 'success' , click: 'safeChanges()'},
+    { type: 'Delete', color: 'danger', click: 'deleteChanges()'},
+  ]
   buttons = computed(() => {
     switch (this.page()) {
       case 'shopping-list':
-        return [
-          { type: 'Save', color: 'success' },
-          { type: 'Delete', color: 'danger' }
-        ];
+        this.defaultButtons.push(
+          { type: 'Manage Products', color: 'primary', routerLink: '/products' }
+        );
+        return this.defaultButtons;
       case 'recipe':
-        return [
-          { type: 'Add Ingredient', color: 'primary' },
-          { type: 'Remove Ingredient', color: 'warning' }
-        ];
+        this.defaultButtons.push(
+          { type: 'Go to Website', color: 'primary', routerLink: ''}
+        );
+        return this.defaultButtons;
       default:
-        return [{ type: 'Default Action', color: 'secondary' }];
+        return this.defaultButtons;
     }
   });
 

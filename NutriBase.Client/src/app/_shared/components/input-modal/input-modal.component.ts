@@ -41,14 +41,14 @@ export class InputModalComponent  implements OnInit {
 
   GenerateForm(inpClass: any){
     const instance = new inpClass();
-    console.log('Instance of inpClass:', instance);
+    // console.log('Instance of inpClass:', instance);
     const properties = Object.keys(instance);
-    console.log('Generated properties:', properties);
+    // console.log('Generated properties:', properties);
 
     properties.forEach(prop => {
       this.form.addControl(prop, this.formBuilder.control(''));
     }) 
-    console.log('Generated form:', this.form); 
+    // console.log('Generated form:', this.form); 
   }
 
   GetButtonColor() : string {
