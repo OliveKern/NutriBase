@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, input, OnInit } from '@angular/core';
+import { Component, input, OnInit, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Plan, ShoppingList } from 'src/app/_shared/models/app/plan.model';
@@ -15,7 +15,9 @@ import { NutritionForm } from 'src/app/_shared/enums/nutritionForm.enum';
   imports: [IonicModule, FormsModule, DatePipe, ListComponent]
 })
 export class ShoppingListComponent  implements OnInit {
-  shoppingList = input<ShoppingList>(new ShoppingList('New Shopping List', new Date(), [], [], 0, 0, 0));
+  // shoppingList = input<WritableSignal<ShoppingList>>(new ShoppingList('New Shopping List', new Date(), [], [], 0, 0, 0));
+  readonly shoppingList = input.required<WritableSignal<ShoppingList>>();
+
   newGrocery: Grocery = new Grocery(
     '', // definition
     '', // description
@@ -48,10 +50,16 @@ export class ShoppingListComponent  implements OnInit {
     recipes: [],
     shoppingLists: []
   }];
+
+  get currentList(): ShoppingList {
+    return this.shoppingList()?.();
+  }
   
   constructor() { }
 
   addGrocery() {  
+    const list = this.currentList;
+    
     const grocery = new Grocery(
       this.newGrocery.definition,
       this.newGrocery.description,
@@ -64,16 +72,43 @@ export class ShoppingListComponent  implements OnInit {
       this.newGrocery.sugarPer100g,
       this.newGrocery.nutritionForm
     );
-    grocery.shoppingLists.push(this.shoppingList()!);
-    this.shoppingList()!.addProduct(grocery);
-    console.log(this.shoppingList());
+
+    grocery.shoppingLists.push(list);
+    list.addProduct(grocery);
+    console.log(list);
     this.newGrocery = this.ResetNewGrocery(this.newGrocery);
   }
 
   deleteGrocery(item: Grocery | HouseholdItem) {
-    console.log(item);
-    this.shoppingList()!.removeProduct(item);
+    const list = this.currentList;
+    console.log(list);
+    list.removeProduct(item);
   }
+
+
+  // addGrocery() {  
+  //   const grocery = new Grocery(
+  //     this.newGrocery.definition,
+  //     this.newGrocery.description,
+  //     this.newGrocery.price,
+  //     this.newGrocery.packageSize,
+  //     this.newGrocery.recipes,
+  //     this.newGrocery.shoppingLists,
+  //     this.newGrocery.kaloriesPer100g,
+  //     this.newGrocery.proteinPer100g,
+  //     this.newGrocery.sugarPer100g,
+  //     this.newGrocery.nutritionForm
+  //   );
+  //   grocery.shoppingLists.push(this.shoppingList()!);
+  //   this.shoppingList()!.addProduct(grocery);
+  //   console.log(this.shoppingList());
+  //   this.newGrocery = this.ResetNewGrocery(this.newGrocery);
+  // }
+
+  // deleteGrocery(item: Grocery | HouseholdItem) {
+  //   console.log(item);
+  //   this.shoppingList()!.removeProduct(item);
+  // }
 
   ResetNewGrocery(grocery: Grocery) : Grocery {
     return grocery = {

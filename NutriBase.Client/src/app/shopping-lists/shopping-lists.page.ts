@@ -32,9 +32,31 @@ export class ShoppingListsPage implements OnInit {
   }
 
   SetSelShoLi(selShoLi: ShoppingList) {
-    this.selShoLi.set(selShoLi);
+    const newList = new ShoppingList(
+      selShoLi.definition,
+      selShoLi.modifiedDate,
+      [...selShoLi.groceries],         
+      [...selShoLi.householdItems],      
+      selShoLi.groceryNumber,
+      selShoLi.householdItemNumber,
+      selShoLi.totalCost
+    );
+    this.selShoLi.set(newList);
     console.log('Selected Shopping List:', selShoLi);
   }
+
+  // SetSelShoLi(selShoLi: ShoppingList) {
+  //   this.selShoLi.set(new ShoppingList(
+  //     selShoLi.definition,
+  //     selShoLi.modifiedDate,
+  //     selShoLi.groceries,
+  //     selShoLi.householdItems,
+  //     selShoLi.groceryNumber,
+  //     selShoLi.householdItemNumber,
+  //     selShoLi.totalCost
+  //   ));
+  //   console.log('Selected Shopping List:', selShoLi);
+  // }
 
 
 }
