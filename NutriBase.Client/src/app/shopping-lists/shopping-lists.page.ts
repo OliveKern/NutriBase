@@ -19,16 +19,12 @@ export class ShoppingListsPage implements OnInit {
   
   shoppingLists: ShoppingList[] = [];
   products: Product[] = [];
-  selShoLi = signal<ShoppingList>(new ShoppingList('New Shopping List', new Date(), [], [], 0, 0, 0));
+  selShoLi = signal<ShoppingList>(this.returnDefaultShoppingList());
 
   constructor() { }
 
   ngOnInit() {
-    this.shoLiService.getShoppingLists().subscribe({
-      next: response => this.shoppingLists = response,
-      error: err => console.log(err),
-      complete: () => console.log("Shopping lists loaded!")
-    })
+    this.loadShoppingLists();
   }
 
   SetSelShoLi(selShoLi: ShoppingList) {
@@ -45,6 +41,29 @@ export class ShoppingListsPage implements OnInit {
     console.log('Selected Shopping List:', selShoLi);
   }
 
+  loadShoppingLists() {
+        this.shoLiService.getShoppingLists().subscribe({
+      next: response => this.shoppingLists = response,
+      error: err => console.log(err),
+      complete: () => console.log("Shopping lists loaded!")
+    })
+  }
+
+  onSave() {
+    console.log('Save action triggered');
+    this.shoLiService.postShoppingList(this.selShoLi()).subscribe({
+      next: response => console.log('Shopping list saved:', response),
+      error: err => console.error('Error saving shopping list:', err),
+      complete: () => console.log('Save operation completed.')
+    });
+    this.loadShoppingLists(); // Aktualisiere die Liste nach dem Speichern
+  }
+
+  onDelete() {
+    console.log('Delete action triggered');
+    this.selShoLi.set(this.returnDefaultShoppingList()); // Zurücksetzen
+  }
+
   // SetSelShoLi(selShoLi: ShoppingList) {
   //   this.selShoLi.set(new ShoppingList(
   //     selShoLi.definition,
@@ -58,5 +77,7 @@ export class ShoppingListsPage implements OnInit {
   //   console.log('Selected Shopping List:', selShoLi);
   // }
 
-
+  returnDefaultShoppingList(): ShoppingList {
+    return new ShoppingList('New Shopping List', new Date(), [], [], 0, 0, 0); 
+  }
 }

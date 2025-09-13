@@ -28,4 +28,9 @@ export class ShoppingListsService {
   postShoppingList(shoppingList: ShoppingList) {
     return this.http.post(`$(this.url)/PostShoppingList`, shoppingList);
   }
+
+  putShoppingList(shoppingList: ShoppingList) {
+    return this.http.put(`${this.url}/PutShoppingList`, shoppingList);
+  }
+
 }

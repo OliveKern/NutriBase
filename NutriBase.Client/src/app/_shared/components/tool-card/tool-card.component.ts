@@ -1,4 +1,4 @@
-import { Component, computed, input, OnInit } from '@angular/core';
+import { Component, computed, input, OnInit, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
@@ -10,10 +10,13 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule, RouterModule]
 })
 export class ToolCardComponent  implements OnInit {
+  safe = output<void>();
+  delete = output<void>();
+
   page = input<string>("shopping-list");
-  defaultButtons: {type: string, color: string, click?: string, routerLink?: string}[] = [
-    { type: 'Save', color: 'success' , click: 'safeChanges()'},
-    { type: 'Delete', color: 'danger', click: 'deleteChanges()'},
+  defaultButtons: {type: string, color: string, click?: (() => void), routerLink?: string}[] = [
+    { type: 'Save', color: 'success' , click: () => this.safeChanges()},
+    { type: 'Delete', color: 'danger', click: () => this.deleteChanges()},
   ]
   buttons = computed(() => {
     switch (this.page()) {
@@ -35,4 +38,14 @@ export class ToolCardComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {}
+
+  safeChanges() {
+    console.log('Safe changes clicked');
+    this.safe.emit();
+  }
+
+  deleteChanges() {
+    console.log('Delete changes clicked');
+    this.delete.emit();
+  }
 }

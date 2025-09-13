@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, input, OnInit, WritableSignal } from '@angular/core';
+import { Component, effect, input, OnInit, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Plan, ShoppingList } from 'src/app/_shared/models/app/plan.model';
@@ -54,8 +54,6 @@ export class ShoppingListComponent  implements OnInit {
   get currentList(): ShoppingList {
     return this.shoppingList()?.();
   }
-  
-  constructor() { }
 
   addGrocery() {  
     const list = this.currentList;

@@ -14,12 +14,13 @@
           <app-shopping-list [shoppingList]="selShoLi"></app-shopping-list>
         </ion-col>
         <ion-col size="12" size-md="4">
-          <app-tool-card></app-tool-card>
+          <app-tool-card (safe)="onSave()" (delete)="onDelete()"></app-tool-card>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <app-shopping-lists-table class="table" [shoppingLists]="shoppingLists" (selShoLi)="SetSelShoLi($event)"></app-shopping-lists-table>
+          <app-shopping-lists-table 
+          class="table" [shoppingLists]="shoppingLists" (selShoLi)="SetSelShoLi($event)"></app-shopping-lists-table>
         </ion-col>
       </ion-row>
     </ion-grid>
