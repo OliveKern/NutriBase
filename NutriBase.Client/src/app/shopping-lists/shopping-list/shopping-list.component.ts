@@ -17,19 +17,19 @@ import { NutritionForm } from 'src/app/_shared/enums/nutritionForm.enum';
 export class ShoppingListComponent  implements OnInit {
   // shoppingList = input<WritableSignal<ShoppingList>>(new ShoppingList('New Shopping List', new Date(), [], [], 0, 0, 0));
   readonly shoppingList = input.required<WritableSignal<ShoppingList>>();
+  //readonly groceries = input.required<WritableSignal<Grocery[]>>();
 
   newGrocery: Grocery = new Grocery(
     '', // definition
     '', // description
     0,  // price
     '', // packageSize
-    [], // recipes
-    [], // shoppingLists
     0,  // kaloriesPer100g
     0,  // proteinPer100g
     0,  // sugarPer100g
     NutritionForm.NotSpecified // nutritionForm
   );
+
   testArray: Grocery[] = [{
     definition: 'test 1', price: 50, kaloriesPer100g: 15,
     proteinPer100g: 0,
@@ -37,8 +37,6 @@ export class ShoppingListComponent  implements OnInit {
     nutritionForm: NutritionForm.Vegetarian,
     description: '',
     packageSize: '',
-    recipes: [],
-    shoppingLists: []
   },
   {
     definition: 'test 2', price: 50, kaloriesPer100g: 15,
@@ -47,68 +45,53 @@ export class ShoppingListComponent  implements OnInit {
     nutritionForm: NutritionForm.Vegetarian,
     description: '',
     packageSize: '',
-    recipes: [],
-    shoppingLists: []
   }];
 
-  get currentList(): ShoppingList {
+  get currentList() : ShoppingList {
     return this.shoppingList()?.();
   }
 
-  addGrocery() {  
-    const list = this.currentList;
-    
+  get currentListGroceries(): Grocery[] {
+    const list = this.shoppingList()?.();
+    return list.groceries ?? [];
+  }
+
+  addGrocery() {      
     const grocery = new Grocery(
       this.newGrocery.definition,
       this.newGrocery.description,
       this.newGrocery.price,
       this.newGrocery.packageSize,
-      this.newGrocery.recipes,
-      this.newGrocery.shoppingLists,
       this.newGrocery.kaloriesPer100g,
       this.newGrocery.proteinPer100g,
       this.newGrocery.sugarPer100g,
       this.newGrocery.nutritionForm
     );
 
-    grocery.shoppingLists.push(list);
-    list.addProduct(grocery);
-    console.log(list);
-    this.newGrocery = this.ResetNewGrocery(this.newGrocery);
+    const list = this.shoppingList()?.();
+
+    if (list) {
+      list.groceries.push(grocery);
+    }
+
+    this.newGrocery = this.ResetGrocery(this.newGrocery);
+
+    //const sig = this.groceries?.();
+    //if (sig) {
+    //  sig.update(arr => [...arr, grocery]);
+    //}
+
+    //this.groceries()?.().push(grocery);
+    //this.newGrocery = this.ResetNewGrocery(this.newGrocery);
   }
 
   deleteGrocery(item: Grocery | HouseholdItem) {
     const list = this.currentList;
     console.log(list);
-    list.removeProduct(item);
+  //  list.removeProduct(item);
   }
 
-
-  // addGrocery() {  
-  //   const grocery = new Grocery(
-  //     this.newGrocery.definition,
-  //     this.newGrocery.description,
-  //     this.newGrocery.price,
-  //     this.newGrocery.packageSize,
-  //     this.newGrocery.recipes,
-  //     this.newGrocery.shoppingLists,
-  //     this.newGrocery.kaloriesPer100g,
-  //     this.newGrocery.proteinPer100g,
-  //     this.newGrocery.sugarPer100g,
-  //     this.newGrocery.nutritionForm
-  //   );
-  //   grocery.shoppingLists.push(this.shoppingList()!);
-  //   this.shoppingList()!.addProduct(grocery);
-  //   console.log(this.shoppingList());
-  //   this.newGrocery = this.ResetNewGrocery(this.newGrocery);
-  // }
-
-  // deleteGrocery(item: Grocery | HouseholdItem) {
-  //   console.log(item);
-  //   this.shoppingList()!.removeProduct(item);
-  // }
-
-  ResetNewGrocery(grocery: Grocery) : Grocery {
+  ResetGrocery(grocery: Grocery) : Grocery {
     return grocery = {
       definition: '', 
       price: 0, 
@@ -118,8 +101,6 @@ export class ShoppingListComponent  implements OnInit {
       nutritionForm: NutritionForm.NotSpecified,
       description: '',
       packageSize: '',
-      recipes: [],
-      shoppingLists: []
     };
   }
 

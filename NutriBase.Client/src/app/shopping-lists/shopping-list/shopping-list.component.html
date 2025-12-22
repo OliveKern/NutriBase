@@ -21,7 +21,7 @@
             <!-- } 
           </ion-list> -->
             <!-- <app-list [inputArray]="testArray"></app-list> -->
-            <app-list [inputArray]="currentList.groceries" (item)="deleteGrocery($event)"></app-list>
+            <app-list [inputArray]="currentListGroceries" (item)="deleteGrocery($event)"></app-list>
             <ion-input [(ngModel)]="newGrocery.definition" placeholder="New Grocery" fill="solid" (keydown.enter)="addGrocery()"></ion-input>
         </ion-card-content>
       </ion-card>

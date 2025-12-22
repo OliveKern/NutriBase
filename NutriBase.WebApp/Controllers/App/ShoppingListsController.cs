@@ -9,7 +9,7 @@ namespace NutriBase.WebApp.Controllers.App
     {
         internal ShoppingListsService shopListSrv = new ShoppingListsService();
 
-        [HttpPost]
+        [HttpPost("PostShoppingList")]
         public async Task<ActionResult<ShoppingListDto>> PostShoppingList(ShoppingListDto shoppingListDto)
         {
             var shoppingList = await shopListSrv.InsertShoppingListAsync(shoppingListDto);
@@ -22,5 +22,11 @@ namespace NutriBase.WebApp.Controllers.App
             var shoppingLists = await shopListSrv.GetAllShoppingListsAsync();
             return Ok(shoppingLists);
         }
+
+        //[HttpPatch("PatchShoppingList")]
+        //public async Task<ActionResult<ShoppingListDto>> PatchShoppingList(ShoppingListDto shoppingListDto)
+        //{
+        //    return await new Task<ActionResult<ShoppingListDto>>();
+        //}
     }
 }
