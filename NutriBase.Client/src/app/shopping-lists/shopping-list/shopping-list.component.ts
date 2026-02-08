@@ -16,7 +16,7 @@ import { NutritionForm } from 'src/app/_shared/enums/nutritionForm.enum';
 })
 export class ShoppingListComponent  implements OnInit {
   // shoppingList = input<WritableSignal<ShoppingList>>(new ShoppingList('New Shopping List', new Date(), [], [], 0, 0, 0));
-  readonly shoppingList = input.required<WritableSignal<ShoppingList>>();
+  readonly shoppingList = input.required<ShoppingList>();
   //readonly groceries = input.required<WritableSignal<Grocery[]>>();
 
   newGrocery: Grocery = new Grocery(
@@ -48,11 +48,11 @@ export class ShoppingListComponent  implements OnInit {
   }];
 
   get currentList() : ShoppingList {
-    return this.shoppingList()?.();
+    return this.shoppingList();
   }
 
   get currentListGroceries(): Grocery[] {
-    const list = this.shoppingList()?.();
+    const list = this.shoppingList();
     return list.groceries ?? [];
   }
 
@@ -68,7 +68,7 @@ export class ShoppingListComponent  implements OnInit {
       this.newGrocery.nutritionForm
     );
 
-    const list = this.shoppingList()?.();
+    const list = this.shoppingList();
 
     if (list) {
       list.groceries.push(grocery);

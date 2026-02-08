@@ -15,6 +15,7 @@ import { ToolCardComponent } from "../_shared/components/tool-card/tool-card.com
   imports: [IonicModule, ShoppingListComponent, ShoppingListsTableComponent, ToolCardComponent, ToolCardComponent]
 })
 export class ShoppingListsPage implements OnInit {
+  name = 'shopping-lists';
   shoLiService = inject(ShoppingListsService);
   
   shoppingLists: ShoppingList[] = [];
@@ -28,11 +29,7 @@ export class ShoppingListsPage implements OnInit {
   }
 
   SetSelShoLi(selShoLi: ShoppingList) {
-    const newList = new ShoppingList(
-      selShoLi.definition,
-      selShoLi.modifiedDate,
-      1      //Umbauen auf UserId des aktuellen Users
-    );
+    const newList = selShoLi;
     this.selShoLi.set(newList);
     console.log('Selected Shopping List:', selShoLi);
   }
